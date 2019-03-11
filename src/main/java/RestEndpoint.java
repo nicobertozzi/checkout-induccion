@@ -1,40 +1,20 @@
-import com.mercadopago.exceptions.MPException;
 import com.mercadopago.resources.Payment;
 import com.mercadopago.resources.Preference;
 import com.mercadopago.resources.datastructures.preference.Identification;
 import com.mercadopago.resources.datastructures.preference.Item;
 import com.mercadopago.resources.datastructures.preference.Payer;
 import spark.*;
-import com.mercadopago.*;
 import spark.template.thymeleaf.ThymeleafTemplateEngine;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class RestEndpoint {
 
-    // Checkout basico
-    private static final String SELLER_CLIENT_ID = "2799634616083392";
-    private static final String SELLER_CLIENT_SECRET = "ZWNgyLUjf3F1Z0lH3yawRNYvSD73p6OH";
-    // Checkout personalizado
-    private static final String SELLER_ACCESS_TOKEN = "TEST-2799634616083392-030613-37d6c9f41b71f2b5dc2170a70cf3d211-401515673";
-
-    // PAYER
-    private static final String PAYER_NICK = "TESTMKRSPLCN";
-    private static final String PAYER_EMAIL = "test_user_19562067@testuser.com";
-
     // String para almacenar la ruta a donde ir dependiendo del estado del pago...
-    static String view = null;
+    private static String view = null;
 
     public static void main(String[] args) {
-        try {
-            configureSpark();
-            configureCredentials();
-
-            System.out.println(">> Configuration done!");
-        } catch (MPException mpe) {
-            mpe.printStackTrace();
-        }
+        Configuration.configureSpark();
 
         // Para el Punto 1 [Crear la preference] y Punto 2 [Obtener la preference y utilizar el SDK]
         Spark.get("/get-preference", (req, resp) -> getPreference(), JsonUtils.json());
@@ -49,7 +29,6 @@ public class RestEndpoint {
         // Spark.get("/payment-status", RestEndpoint::renderPaymentStatus, new ThymeleafTemplateEngine());
         // Spark.post("/process-payment", RestEndpoint::processPayment, JsonUtils.json());
 
-
         // Para el Punto 4 [Web Tokenize (v2)] y Punto 5 [Web Payment (v2)]
         Spark.get("/payment-status", RestEndpoint::renderPaymentStatus, new ThymeleafTemplateEngine());
         Spark.post("/tokenize_or_process-payment", RestEndpoint::tokenizeOrProcessPayment, JsonUtils.json());
@@ -58,44 +37,18 @@ public class RestEndpoint {
     }
 
     /*
-    Configuracion inicial de Spark...
-     */
-    private static void configureSpark() {
-        // Cambiamos a un puerto mas amigable...
-        Spark.port(9999);
-
-        // Al hacer el fetch desde React para obtener los datos, se bloqueaba el acceso por CORS policy (por eso se devuelve en la cabecera)
-        Spark.after((Filter) (req, resp) -> {
-            resp.header("Access-Control-Allow-Origin", "*");
-            resp.header("Access-Control-Allow-Methods", "GET");
-        });
-    }
-    /*
-    Configuracion de las credenciales de un usuario de prueba test_user_84296691@testuser.com
-     */
-    private static void configureCredentials() throws MPException {
-        MercadoPago.SDK.setClientId(SELLER_CLIENT_ID);
-        MercadoPago.SDK.setClientSecret(SELLER_CLIENT_SECRET);
-    }
-
-    /*
-    Configuracion para el Access Token...
-     */
-    public static void configureAccessToken() throws MPException {
-        MercadoPago.SDK.setAccessToken(SELLER_ACCESS_TOKEN);
-    }
-
-    /*
-    Creamos una preference a partir de un Payer e Items...
+    Creamos una Preference a partir de un Payer e Items...
      */
     private static Preference getPreference() {
+        System.out.println("getPreference()");
+
         Preference locPreference = new Preference();
         try {
             // Creamos un Payer de Test...
             locPreference.setPayer(new Payer()
                     .setName("TEST")
-                    .setSurname(PAYER_NICK)
-                    .setEmail(PAYER_EMAIL)
+                    .setSurname(Credentials.PAYER_NICK)
+                    .setEmail(Credentials.PAYER_EMAIL)
                     .setIdentification(new Identification()
                             .setType("DNI")
                             .setNumber("20202020")));
@@ -125,7 +78,7 @@ public class RestEndpoint {
 
         Payment payment = new Payment();
         try {
-            configureAccessToken();
+            Credentials.configureAccessToken();
 
             payment.setTransactionAmount(Float.parseFloat(request.queryParams("amount")))
                     .setToken(request.queryParams("token"))
@@ -151,7 +104,7 @@ public class RestEndpoint {
 
         Payment payment = new Payment();
         try {
-            configureAccessToken();
+            Credentials.configureAccessToken();
 
             payment.setTransactionAmount(300F)
                     .setToken(request.queryParams("token"))
@@ -160,7 +113,7 @@ public class RestEndpoint {
                     .setPaymentMethodId(request.queryParams("payment_method_id"))
                     .setIssuerId(request.queryParams("issuer_id"))
                     .setPayer(new com.mercadopago.resources.datastructures.payment.Payer()
-                            .setEmail(PAYER_EMAIL));
+                            .setEmail(Credentials.PAYER_EMAIL));
 
             payment.save();
         } catch (Exception e) {
