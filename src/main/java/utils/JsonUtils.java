@@ -1,6 +1,6 @@
+package utils;
 
 import com.google.gson.Gson;
-
 import spark.ResponseTransformer;
 
 /*

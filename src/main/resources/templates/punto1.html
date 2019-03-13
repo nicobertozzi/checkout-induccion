@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Checkout (Inducción) [React App]</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="https://secure.mlstatic.com/sdk/javascript/v1/mercadopago.js"></script>
+    <script type="text/javascript">
+        Mercadopago.setPublishableKey("[[${publicKey}]]");
+    </script>
+
+    <style>
+        body {
+          font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .navbar {
+          overflow: hidden;
+          background-color: #333;
+        }
+
+        .navbar a {
+          float: left;
+          font-size: 16px;
+          color: white;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+        }
+
+        .dropdown {
+          float: left;
+          overflow: hidden;
+        }
+
+        .dropdown .dropbtn {
+          font-size: 16px;
+          border: none;
+          outline: none;
+          color: white;
+          padding: 14px 16px;
+          background-color: inherit;
+          font-family: inherit;
+          margin: 0;
+        }
+
+        .navbar a:hover, .dropdown:hover .dropbtn {
+          background-color: red;
+        }
+
+        .dropdown-content {
+          display: none;
+          position: absolute;
+          background-color: #f9f9f9;
+          min-width: 160px;
+          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+          z-index: 1;
+        }
+
+        .dropdown-content a {
+          float: none;
+          color: black;
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+          text-align: left;
+        }
+
+        .dropdown-content a:hover {
+          background-color: #ddd;
+        }
+
+        .dropdown:hover .dropdown-content {
+          display: block;
+        }
+    </style>
+    <style>
+        * {
+          box-sizing: border-box;
+        }
+
+        /* Add padding to containers */
+        .container {
+          padding: 16px;
+        }
+
+        input[type=text]:focus {
+          background-color: #ddd;
+          outline: none;
+        }
+
+        /* Overwrite default styles of hr */
+        hr {
+          border: 1px solid #f1f1f1;
+          margin-bottom: 25px;
+        }
+
+        /* Set a style for the submit button */
+        .createbtn {
+          background-color: #4CAF50;
+          color: white;
+          margin: 8px 0;
+          cursor: pointer;
+          opacity: 0.9;
+        }
+
+        .createbtn:hover {
+          opacity: 1;
+        }
+
+        /* Add a blue text color to links */
+        a {
+          color: dodgerblue;
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <div align="center">
+        <h1>niike's site</h1>
+    </div>
+    <div class="navbar">
+        <a href="/">Inicio</a>
+        <div class="dropdown">
+            <button class="dropbtn">Puntos
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="punto1">>> Punto 1</a>
+                <a href="punto2">Punto 2</a>
+                <a href="punto3">Punto 3</a>
+                <a href="punto4">Punto 4</a>
+                <a href="punto5">Punto 5</a>
+            </div>
+        </div>
+    </div>
+    <!-- HEADER -->
+
+    <div>
+        <fieldset>
+            <div align="center">
+                <h4><u>Punto 1</u>: Crear preferencia</h4>
+            </div>
+            <div align="left">
+                <form id="formCreatePreference" method="POST" action="/create-preference">
+                    <div class="container">
+                        <label for="payerName"><b>Nombre</b></label>
+                        <input value="Nico" id="payerName" type="text" placeholder="Nombre del comprador" name="payerName" required style="width: 200px;">
+                        <br />
+                        <label for="payerSurname"><b>Apellido</b></label>
+                        <input value="Bertozzi" id="payerSurname" type="text" placeholder="Apellido del comprador" name="payerSurname" required style="width: 200px;">
+                        <br />
+                        <label for="payerEmail"><b>E-mail</b></label>
+                        <input value="nico.bertozzi@gmail.com" id="payerEmail" type="email" placeholder="E-mail del comprador" name="payerEmail" required style="width: 300px;">
+                        <br />
+                        <label for="payerTypeDNI"><b>Tipo de DNI</b></label>
+                        <select id="payerTypeDNI" name="payerTypeDNI" required>
+                            <option value=""></option>
+                            <option selected value="DNI">DNI</option>
+                        </select>
+                        <br />
+                        <label for="payerNumberDNI"><b>Número de DNI</b></label>
+                        <input value="32978330" id="payerNumberDNI" type="number" placeholder="Número" name="payerNumberDNI" required style="width: 100px;">
+                        <br />
+                        <label for="itemTitle"><b>Producto</b></label>
+                        <input value="Algo muy codiciado" id="itemTitle" type="text" placeholder="Titulo" name="itemTitle" required style="width: 200px;">
+                        <label for="itemUnitPrice"><b>Precio Unitario</b></label>
+                        <input value="50000.00" id="itemUnitPrice" type="number" placeholder="Precio" name="itemUnitPrice" required style="width: 80px;">
+                        <label for="itemQuantity"><b>Cantidad</b></label>
+                        <input value="1" id="itemQuantity" type="number" placeholder="Cantidad" name="itemQuantity" required style="width: 60px;">
+                        <br />
+                        <hr>
+                        <p>Para ver la Preferencia generada ir al <a href="/">Inicio</a>.</p>
+
+                        <button type="submit" class="createbtn">Crear</button>
+                    </div>
+                    <!-- SCRIPT PARA PODER TRANSFORMAR LOS DATOS EN JSON () -->
+                    <script type="text/javascript">
+                        function toJSONString(form) {
+                            var obj = {};
+                            var elements = form.querySelectorAll("input, select, textarea");
+
+                            for( var i = 0; i < elements.length; ++i) {
+                                var element = elements[i];
+                                var name = element.name;
+                                var value = element.value;
+
+                                if(name) {
+                                    obj[name] = value;
+                                }
+                            }
+
+                            return JSON.stringify(obj);
+                        }
+
+                        function submitFormCreatePreference() {
+                            var xhr = new XMLHttpRequest();
+                            xhr.open('POST', '/create-preference', true);
+                            xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+
+                            xhr.send(toJSONString(document.getElementById("formCreatePreference")));
+                        }
+                    </script>
+                </form>
+            </div>
+        </fieldset>
+    </div>
+</body>
+</html>

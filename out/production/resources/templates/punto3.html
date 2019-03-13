@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Checkout (Inducción) [React App]</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="https://secure.mlstatic.com/sdk/javascript/v1/mercadopago.js"></script>
+    <script type="text/javascript">
+        Mercadopago.setPublishableKey("[[${publicKey}]]");
+    </script>
+
+    <style>
+        body {
+          font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .navbar {
+          overflow: hidden;
+          background-color: #333;
+        }
+
+        .navbar a {
+          float: left;
+          font-size: 16px;
+          color: white;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+        }
+
+        .dropdown {
+          float: left;
+          overflow: hidden;
+        }
+
+        .dropdown .dropbtn {
+          font-size: 16px;
+          border: none;
+          outline: none;
+          color: white;
+          padding: 14px 16px;
+          background-color: inherit;
+          font-family: inherit;
+          margin: 0;
+        }
+
+        .navbar a:hover, .dropdown:hover .dropbtn {
+          background-color: red;
+        }
+
+        .dropdown-content {
+          display: none;
+          position: absolute;
+          background-color: #f9f9f9;
+          min-width: 160px;
+          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+          z-index: 1;
+        }
+
+        .dropdown-content a {
+          float: none;
+          color: black;
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+          text-align: left;
+        }
+
+        .dropdown-content a:hover {
+          background-color: #ddd;
+        }
+
+        .dropdown:hover .dropdown-content {
+          display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <div align="center">
+        <h1>niike's site</h1>
+    </div>
+
+    <div class="navbar">
+        <a href="/">Inicio</a>
+        <div class="dropdown">
+            <button class="dropbtn">Puntos
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="punto1">Punto 1</a>
+                <a href="punto2">Punto 2</a>
+                <a href="punto3">>> Punto 3</a>
+                <a href="punto4">Punto 4</a>
+                <a href="punto5">Punto 5</a>
+            </div>
+        </div>
+    </div>
+    <!-- HEADER -->
+
+    <div>
+        <fieldset>
+            <div align="center">
+                <h4><u>Punto 3</u>: Flujo de pago (v1)</h4>
+            </div>
+            <div align="left">
+                <form id="formProcessPayment" name="formProcessPayment" method="POST" action="/pay-preference">
+                    <ul align="left">
+                        <li>
+                            <label htmlFor="email">E-mail: </label>
+                            <input value="nico.bertozzi@gmail.com" id="email" name="email" type="email" placeholder="algo@otra-cosa.com" style="width: 300px" />
+                        </li>
+                        <li>
+                            <label htmlFor="amount">Monto: </label>
+                            <input value="500.00" id="amount" name="amount" placeholder="100" style="width: 70px" />
+                        </li>
+                        <li>
+                            <label htmlFor="cardNumber">Numero de la tarjeta: </label>
+                            <input value="4509953566233704" type="text" id="cardNumber" data-checkout="cardNumber" placeholder="4509 9535 6623 3704" maxLength="16" />
+
+                            <label htmlFor="installments"> Cuotas: </label>
+                            <select id="installments" data-checkout="installments" name="installments"></select>
+
+                            <label htmlFor="securityCode"> Codigo de seguridad: </label>
+                            <input value="143" type="text" id="securityCode" data-checkout="securityCode" placeholder="123" maxLength="4" style="width: 30px" />
+                        </li>
+                        <li>
+                            <label htmlFor="cardExpirationMonth">Mes de expiracion: </label>
+                            <input value="12" type="text" id="cardExpirationMonth" data-checkout="cardExpirationMonth" placeholder="12" maxLength="2" style="width: 15px" />
+
+                            <label htmlFor="cardExpirationYear"> Año: </label>
+                            <input value="20" type="text" id="cardExpirationYear" data-checkout="cardExpirationYear" placeholder="2020" maxLength="4" style="width: 30px" />
+                        </li>
+                        <li>
+                            <label htmlFor="cardholderName">Nombre y Apellido: </label>
+                            <input value="Nico Bertozzi" type="text" id="cardholderName" data-checkout="cardholderName" placeholder="Como aparece en la tarjeta" style="width: 200px" />
+                        </li>
+                        <li>
+                            <label htmlFor="docType">Tipo de documento: </label>
+                            <select id="docType" data-checkout="docType"></select>
+
+                            <label htmlFor="docNumber"> Numero: </label>
+                            <input value="32978330" type="text" id="docNumber" data-checkout="docNumber" placeholder="32978330" maxLength="8" style="width: 60px" />
+                        </li>
+                    </ul>
+                    <input type="hidden" id="paymentMethod" name="paymentMethod" />
+                    <input type="submit" value="Pagar!"/>
+                </form>
+            </div>
+        </fieldset>
+    </div>
+</body>
+<script>
+  // Para obtener los tipos de documentos...
+  Mercadopago.getIdentificationTypes();
+
+  var $cardNumber = document.querySelector('#cardNumber');
+  var $amount = document.querySelector('#amount');
+  var $installments = document.querySelector('#installments');
+
+  // En la documentacion no asignaba en ningun lado el evento...
+  $cardNumber.addEventListener('keyup', guessingPaymentMethod);
+  // Le agregue el mismo evento en el input del monto para que tambien vaya acomodandose si lo modifica
+  $amount.addEventListener('keyup', guessingPaymentMethod);
+
+  function guessingPaymentMethod(event) {
+    if (event.type == "keyup") {
+      if (($cardNumber.value !== undefined && $cardNumber.value.length >= 6)
+        && ($amount.value !== undefined && $amount.value.length >= 0)) {
+        console.log("guessing payment method...");
+
+        // var bin = getBin();
+        // ya que la linea de arriba no podia reconcoer el "getBin()"", se obtuvo a mano en la de abajo...
+        var bin = $cardNumber.value.substring(0, 7).replace(" ", "");
+
+        Mercadopago.getPaymentMethod({
+          "bin": bin
+        }, setPaymentMethodInfo);
+
+        Mercadopago.getInstallments({
+          "bin": bin,
+          "amount": ($amount.value !== undefined ? $amount.value : 0)
+        }, setInstallmentInfo);
+      } else {
+        // borramos las que haya si no cumple con las 2 condiciones...
+        while ($installments.firstChild) {
+          $installments.removeChild($installments.firstChild);
+        }
+      }
+    } else {
+      setTimeout(function () {
+        if (bin.length >= 6) {
+          Mercadopago.getPaymentMethod({
+            "bin": bin
+          }, setPaymentMethodInfo);
+        }
+      }, 100);
+    }
+  };
+
+  function setPaymentMethodInfo(status, response) {
+    if (status == 200) {
+      // el componente paymentMethodId ya existia en el form, por eso solamente lo buscamos y le seteamos el ID obtenido...
+      var $paymentMethod = document.querySelector('#paymentMethod');
+      $paymentMethod.setAttribute('value', response[0].id);
+    } else {
+      document.querySelector("input[name=paymentMethod]").value = (response[0] !== undefined ? response[0].id : "");
+    }
+  };
+
+  function setInstallmentInfo(status, response) {
+    if (status == 200) {
+      // Removemos los hijos que tenga para que no se acumulen...
+      while ($installments.firstChild) {
+        $installments.removeChild($installments.firstChild);
+      }
+      // Recorremos el array para armar los options del select de las cuotas...
+      for (i = 0; i < response[0].payer_costs.length; i++) {
+        var op = document.createElement('option');
+        op.text = response[0].payer_costs[i].recommended_message;
+        op.value = response[0].payer_costs[i].installments;
+
+        $installments.add(op, null);
+      }
+    } else {
+      // Si hubo algun error, removemos los hijos...
+      while ($installments.firstChild) {
+        $installments.removeChild($installments.firstChild);
+      }
+    }
+  };
+
+  doSubmit = false;
+
+  var $form = document.querySelector('#formProcessPayment');
+  $form.addEventListener('submit', doPay);
+
+  function doPay(event) {
+    event.preventDefault();
+    if (!doSubmit) {
+      var $form = document.querySelector('#formProcessPayment');
+
+      Mercadopago.createToken($form, sdkResponseHandler);
+
+      return false;
+    }
+  };
+
+  function sdkResponseHandler(status, response) {
+    if (status != 200 && status != 201) {
+      alert("Verify filled data");
+    } else {
+      var form = document.querySelector('#formProcessPayment');
+      var card = document.createElement('input');
+
+      card.setAttribute('name', 'token');
+      card.setAttribute('type', 'hidden');
+      card.setAttribute('value', response.id);
+
+      form.appendChild(card);
+
+      doSubmit = true;
+
+      form.submit();
+    }
+  };
+</script>
+</html>
