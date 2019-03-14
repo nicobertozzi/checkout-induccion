@@ -1,4 +1,4 @@
-package configuration;
+package constants;
 
 import com.mercadopago.MercadoPago;
 import com.mercadopago.exceptions.MPException;
@@ -22,12 +22,10 @@ public class Credentials {
         MercadoPago.SDK.setClientSecret(CLIENT_SECRET);
 
         System.out.println(">> User's credentials configured!");
-    }
 
-    public static void configureAccessToken() throws MPException {
         MercadoPago.SDK.setAccessToken(ACCESS_TOKEN);
 
-        System.out.println("Access token configured!");
+        System.out.println(">> Access token configured!");
     }
 
 }

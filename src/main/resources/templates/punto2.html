@@ -107,10 +107,15 @@
                 <h4><u>Punto 2</u>: Implementación SDK MercadoPago</h4>
             </div>
             <div align="center">
-                <a th:href="${preferenceInitPoint}" name="MP-Checkout" className="orange-S-Sq-Ar" mp-mode="model">MODEL</a>
-                <a th:href="${preferenceInitPoint}" name="MP-Checkout" className="lightblue-M-Ov-ArOn" mp-mode="popup">POPUP</a>
-                <a th:href="${preferenceInitPoint}" name="MP-Checkout" className="green-L-Rn" mp-mode="blank">BLANK</a>
-                <a th:href="${preferenceInitPoint}" name="MP-Checkout" className="blue-S-Sq-Ar" mp-mode="redirect">REDIRECT</a>
+                <div th:if="${preferenceCreated}">
+                    <a th:href="${preferenceInitPoint}" name="MP-Checkout" className="orange-S-Sq-Ar" mp-mode="model">MODEL</a>
+                    <a th:href="${preferenceInitPoint}" name="MP-Checkout" className="lightblue-M-Ov-ArOn" mp-mode="popup">POPUP</a>
+                    <a th:href="${preferenceInitPoint}" name="MP-Checkout" className="green-L-Rn" mp-mode="blank">BLANK</a>
+                    <a th:href="${preferenceInitPoint}" name="MP-Checkout" className="blue-S-Sq-Ar" mp-mode="redirect">REDIRECT</a>
+                </div>
+                <div th:unless="${preferenceCreated}">
+                    <p>No existe una Preferencia. Genere una desde <a href="/punto1">aquí</a>.</p>
+                </div>
 
                 <script type="text/javascript">
                     function execute_my_onreturn (json) {

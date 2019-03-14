@@ -1,7 +1,7 @@
-package controller;
+package controllers;
 
-import configuration.Credentials;
-import model.Model;
+import constants.Credentials;
+import model.PreferenceModel;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
@@ -14,21 +14,22 @@ public class RenderScreenController {
         System.out.println("rendering inicio....");
         HashMap<String, Object> mapa = new HashMap<>();
 
-        if(Model.preference.getId() != null) {
-            mapa.put("preferenceId", Model.preference.getId());
-            mapa.put("preferenceInitPoint", Model.preference.getInitPoint());
+        if(PreferenceModel.preference.getId() != null) {
+            mapa.put("preferenceId", PreferenceModel.preference.getId());
+            mapa.put("preferenceInitPoint", PreferenceModel.preference.getInitPoint());
 
-            if(Model.preference.getPayer() != null) {
-                mapa.put("payerName", Model.preference.getPayer().getName());
-                mapa.put("payerSurname", Model.preference.getPayer().getSurname());
-                mapa.put("payerEmail", Model.preference.getPayer().getEmail());
+            if(PreferenceModel.preference.getPayer() != null) {
+                mapa.put("payerName", PreferenceModel.preference.getPayer().getName());
+                mapa.put("payerSurname", PreferenceModel.preference.getPayer().getSurname());
+                mapa.put("payerEmail", PreferenceModel.preference.getPayer().getEmail());
             }
-            if(!Model.preference.getItems().isEmpty()) {
-                mapa.put("itemTitle", Model.preference.getItems().get(0).getTitle());
-                mapa.put("itemUnitPrice", Model.preference.getItems().get(0).getUnitPrice());
-                mapa.put("itemQuantity", Model.preference.getItems().get(0).getQuantity());
+            if(!PreferenceModel.preference.getItems().isEmpty()) {
+                mapa.put("itemTitle", PreferenceModel.preference.getItems().get(0).getTitle());
+                mapa.put("itemUnitPrice", PreferenceModel.preference.getItems().get(0).getUnitPrice());
+                mapa.put("itemQuantity", PreferenceModel.preference.getItems().get(0).getQuantity());
             }
         }
+        mapa.put("preferenceCreated", PreferenceModel.preference.getId() != null);
 
         return new ModelAndView(mapa, "inicio");
     }
@@ -37,6 +38,7 @@ public class RenderScreenController {
         System.out.println("rendering punto1....");
         HashMap<String, Object> mapa = new HashMap<>();
 
+        mapa.put("preferenceCreated", PreferenceModel.preference.getId() != null);
         mapa.put("publicKey", Credentials.PUBLIC_KEY);
 
         return new ModelAndView(mapa, "punto1");
@@ -46,9 +48,10 @@ public class RenderScreenController {
         System.out.println("rendering punto2....");
         HashMap<String, Object> mapa = new HashMap<>();
 
-        if(Model.preference.getId() != null) {
-            mapa.put("preferenceInitPoint", Model.preference.getInitPoint());
+        if(PreferenceModel.preference.getId() != null) {
+            mapa.put("preferenceInitPoint", PreferenceModel.preference.getInitPoint());
         }
+        mapa.put("preferenceCreated", PreferenceModel.preference.getId() != null);
         mapa.put("publicKey", Credentials.PUBLIC_KEY);
 
         return new ModelAndView(mapa, "punto2");
@@ -67,13 +70,14 @@ public class RenderScreenController {
         System.out.println("rendering punto4....");
         HashMap<String, Object> mapa = new HashMap<>();
 
-        if(Model.preference.getId() != null) {
-            Double transactionAmount = Model.preference.getItems().stream()
+        if(PreferenceModel.preference.getId() != null) {
+            Double transactionAmount = PreferenceModel.preference.getItems().stream()
                     .mapToDouble(i -> (i.getQuantity() * i.getUnitPrice()))
                     .sum();
 
             mapa.put("transactionAmount", transactionAmount);
         }
+        mapa.put("preferenceCreated", PreferenceModel.preference.getId() != null);
         mapa.put("publicKey", Credentials.PUBLIC_KEY);
 
         return new ModelAndView(mapa, "punto4");
@@ -83,9 +87,10 @@ public class RenderScreenController {
         System.out.println("rendering punto5....");
         HashMap<String, Object> mapa = new HashMap<>();
 
-        if(Model.preference.getId() != null) {
-            mapa.put("preferenceId", Model.preference.getId());
+        if(PreferenceModel.preference.getId() != null) {
+            mapa.put("preferenceId", PreferenceModel.preference.getId());
         }
+        mapa.put("preferenceCreated", PreferenceModel.preference.getId() != null);
         mapa.put("publicKey", Credentials.PUBLIC_KEY);
 
         return new ModelAndView(mapa, "punto5");

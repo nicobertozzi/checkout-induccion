@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Checkout (Inducción) [React App]</title>
@@ -154,7 +154,7 @@
                         <input value="Bertozzi" id="payerSurname" type="text" placeholder="Apellido del comprador" name="payerSurname" required style="width: 200px;">
                         <br />
                         <label for="payerEmail"><b>E-mail</b></label>
-                        <input value="nico.bertozzi@gmail.com" id="payerEmail" type="email" placeholder="E-mail del comprador" name="payerEmail" required style="width: 300px;">
+                        <input value="nico@bertozzi.com" id="payerEmail" type="email" placeholder="E-mail del comprador" name="payerEmail" required style="width: 300px;">
                         <br />
                         <label for="payerTypeDNI"><b>Tipo de DNI</b></label>
                         <select id="payerTypeDNI" name="payerTypeDNI" required>
@@ -168,42 +168,19 @@
                         <label for="itemTitle"><b>Producto</b></label>
                         <input value="Algo muy codiciado" id="itemTitle" type="text" placeholder="Titulo" name="itemTitle" required style="width: 200px;">
                         <label for="itemUnitPrice"><b>Precio Unitario</b></label>
-                        <input value="50000.00" id="itemUnitPrice" type="number" placeholder="Precio" name="itemUnitPrice" required style="width: 80px;">
+                        <input value="500" id="itemUnitPrice" type="number" placeholder="Precio" name="itemUnitPrice" required style="width: 80px;">
                         <label for="itemQuantity"><b>Cantidad</b></label>
                         <input value="1" id="itemQuantity" type="number" placeholder="Cantidad" name="itemQuantity" required style="width: 60px;">
                         <br />
                         <hr>
-                        <p>Para ver la Preferencia generada ir al <a href="/">Inicio</a>.</p>
+
+                        <div>
+                            <p th:if="${preferenceCreated}">Para ver la Preferencia generada ir al <a href="/">Inicio</a>.</p>
+                            <p th:unless="${preferenceCrated}"></p>
+                        </div>
 
                         <button type="submit" class="createbtn">Crear</button>
                     </div>
-                    <!-- SCRIPT PARA PODER TRANSFORMAR LOS DATOS EN JSON () -->
-                    <script type="text/javascript">
-                        function toJSONString(form) {
-                            var obj = {};
-                            var elements = form.querySelectorAll("input, select, textarea");
-
-                            for( var i = 0; i < elements.length; ++i) {
-                                var element = elements[i];
-                                var name = element.name;
-                                var value = element.value;
-
-                                if(name) {
-                                    obj[name] = value;
-                                }
-                            }
-
-                            return JSON.stringify(obj);
-                        }
-
-                        function submitFormCreatePreference() {
-                            var xhr = new XMLHttpRequest();
-                            xhr.open('POST', '/create-preference', true);
-                            xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-
-                            xhr.send(toJSONString(document.getElementById("formCreatePreference")));
-                        }
-                    </script>
                 </form>
             </div>
         </fieldset>

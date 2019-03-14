@@ -5,6 +5,7 @@
 *.so
 
 /out
+/.idea
 
 # Logs and databases #
 ######################

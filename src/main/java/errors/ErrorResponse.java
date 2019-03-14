@@ -8,6 +8,7 @@ public class ErrorResponse {
 
     private final String message;
     private final String error;
+
     @JsonProperty("status")
     private final int httpStatusCode;
     @JsonProperty("cause")

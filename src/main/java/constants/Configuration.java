@@ -1,7 +1,5 @@
-package configuration;
+package constants;
 
-import com.mercadopago.MercadoPago;
-import com.mercadopago.exceptions.MPException;
 import spark.Filter;
 import spark.Spark;
 

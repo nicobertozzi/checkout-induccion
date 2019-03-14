@@ -107,12 +107,15 @@
                 <h4><u>Punto 5</u>: Web Payment (v2)</h4>
             </div>
             <div align="center">
-                <div align="center">
+                <div th:if="${preferenceCreated}">
                     <form action="/process-payment" method="POST">
                         <script src="https://www.mercadopago.com.ar/integrations/v1/web-tokenize-checkout.js"
                                 th:data-preference-id="${preferenceId}">
                         </script>
                     </form>
+                </div>
+                <div th:unless="${preferenceCreated}">
+                    <p>No existe una Preferencia. Genere una desde <a href="/punto1">aquí</a>.</p>
                 </div>
             </div>
         </fieldset>

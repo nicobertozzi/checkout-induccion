@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Checkout (Inducción) [React App]</title>
@@ -99,41 +99,47 @@
             <div align="center">
                 <h4><u>INICIO</u>: Preferencia generada</h4>
             </div>
-            <div align="left">
-                <label><b><u>ID</u>: </b></label>
-                <label id="id"><i>[[${preferenceId}]]</i></label>
-                <br/>
-                <label><b><u>Init point</u>: </b></label>
-                <label id="init-point"><i>[[${preferenceInitPoint}]]</i></label>
-                <br/>
-                <label><b><u>Nombre</u>: </b></label>
-                <label id="name"><i>[[${payerName}]]</i></label>
-                <br/>
-                <label><b><u>Apellido</u>: </b></label>
-                <label id="surname"><i>[[${payerSurname}]]</i></label>
-                <br/>
-                <label><b><u>E-mail</u>: </b></label>
-                <label id="email"><i>[[${payerEmail}]]</i></label>
-                <br/><br/>
-                <label><b><u>Productos</u></b></label>
-                <br/>
-                <div align="center">
-                    <table key="ktable">
-                        <thead key="kthead">
-                        <tr>
-                            <th key="khtitle">Titulo</th>
-                            <th key="khunitprice">Precio unitario</th>
-                            <th key="khquantity">Cantidad</th>
-                        </tr>
-                        </thead>
-                        <tbody key="ktbody">
-                        <tr key={i}>
-                            <td key="kbtitle">[[${itemTitle}]]</td>
-                            <td key="kbunitprice" align="right">[[${itemUnitPrice}]]</td>
-                            <td key="kbquantity" align="center">[[${itemQuantity}]]</td>
-                        </tr>
-                        </tbody>
-                    </table>
+            <br />
+            <div>
+                <div th:if="${preferenceCreated}" align="left">
+                    <label><b><u>ID</u>: </b></label>
+                    <span id="id"><i>[[${preferenceId}]]</i></span>
+                    <br/>
+                    <label><b><u>Init point</u>: </b></label>
+                    <a id="init-point" th:href="${preferenceInitPoint}" target="_blank"><i>[[${preferenceInitPoint}]]</i></a>
+                    <br/>
+                    <label><b><u>Nombre</u>: </b></label>
+                    <span id="name"><i>[[${payerName}]]</i></span>
+                    <br/>
+                    <label><b><u>Apellido</u>: </b></label>
+                    <span id="surname"><i>[[${payerSurname}]]</i></span>
+                    <br/>
+                    <label><b><u>E-mail</u>: </b></label>
+                    <span id="email"><i>[[${payerEmail}]]</i></span>
+                    <br/><br/>
+                    <label><b><u>Productos</u></b></label>
+                    <br/>
+                    <div align="center">
+                        <table key="ktable">
+                            <thead key="kthead">
+                            <tr>
+                                <th key="khtitle">Titulo</th>
+                                <th key="khunitprice">Precio unitario</th>
+                                <th key="khquantity">Cantidad</th>
+                            </tr>
+                            </thead>
+                            <tbody key="ktbody">
+                            <tr key={i}>
+                                <td key="kbtitle">[[${itemTitle}]]</td>
+                                <td key="kbunitprice" align="right">[[${itemUnitPrice}]]</td>
+                                <td key="kbquantity" align="center">[[${itemQuantity}]]</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div th:unless="${preferenceCreated}" align="center">
+                    <p>No existe una Preferencia. Genere una desde <a href="/punto1">aquí</a>.</p>
                 </div>
             </div>
         </fieldset>

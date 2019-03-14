@@ -1,15 +1,14 @@
-package controller;
+package controllers;
 
 import com.mercadopago.resources.Payment;
 import com.mercadopago.resources.Preference;
 import com.mercadopago.resources.datastructures.preference.Identification;
 import com.mercadopago.resources.datastructures.preference.Item;
 import com.mercadopago.resources.datastructures.preference.Payer;
-import configuration.Credentials;
-import model.Model;
+import model.PreferenceModel;
 import spark.Request;
 import spark.Response;
-import utils.RequestUtils;
+import utils.RequestUtil;
 
 public class EndpointController {
 
@@ -20,33 +19,33 @@ public class EndpointController {
         System.out.println("createPreference()");
         System.out.println(request.body());
 
-        Preference locPreference = new Preference();
+        Preference preference = new Preference();
         try {
             // Creamos un Payer de Test...
-            locPreference.setPayer(new Payer()
-                    .setName(RequestUtils.getBodyParameter(request, "payerName"))
-                    .setSurname(RequestUtils.getBodyParameter(request, "payerSurname"))
-                    .setEmail(RequestUtils.getBodyParameter(request, "payerEmail"))
+            preference.setPayer(new Payer()
+                    .setName(RequestUtil.getBodyParameter(request, "payerName"))
+                    .setSurname(RequestUtil.getBodyParameter(request, "payerSurname"))
+                    .setEmail(RequestUtil.getBodyParameter(request, "payerEmail"))
                     .setIdentification(new Identification()
-                            .setType(RequestUtils.getBodyParameter(request, "payerTypeDNI"))
-                            .setNumber(RequestUtils.getBodyParameter(request, "payerNumberDNI"))));
+                            .setType(RequestUtil.getBodyParameter(request, "payerTypeDNI"))
+                            .setNumber(RequestUtil.getBodyParameter(request, "payerNumberDNI"))));
 
             // Creamos un item para la compra y lo añadimos...
-            locPreference.appendItem(new Item()
-                    .setTitle(RequestUtils.getBodyParameter(request, "itemTitle"))
-                    .setQuantity(Integer.parseInt(RequestUtils.getBodyParameter(request, "itemQuantity")))
+            preference.appendItem(new Item()
+                    .setTitle(RequestUtil.getBodyParameter(request, "itemTitle"))
+                    .setQuantity(Integer.parseInt(RequestUtil.getBodyParameter(request, "itemQuantity")))
                     .setCurrencyId("ARS")
-                    .setUnitPrice(Float.parseFloat(RequestUtils.getBodyParameter(request, "itemUnitPrice"))));
+                    .setUnitPrice(Float.parseFloat(RequestUtil.getBodyParameter(request, "itemUnitPrice"))));
 
-            locPreference.save();
+            preference.save();
 
             // Si esta bien, recien ahi reemplazamos...
-            Model.preference = locPreference;
+            PreferenceModel.preference = preference;
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return locPreference;
+        return preference;
     }
 
     public static Object payPreference(Request request, Response response) {
@@ -55,16 +54,14 @@ public class EndpointController {
 
         Payment payment = new Payment();
         try {
-            Credentials.configureAccessToken();
-
-            payment.setTransactionAmount(Float.parseFloat(RequestUtils.getBodyParameter(request, "amount")))
-                    .setToken(RequestUtils.getBodyParameter(request, "token"))
+            payment.setTransactionAmount(Float.parseFloat(RequestUtil.getBodyParameter(request, "amount")))
+                    .setToken(RequestUtil.getBodyParameter(request, "token"))
                     .setDescription("Algo muy codiciado")
-                    .setInstallments(Integer.parseInt(RequestUtils.getBodyParameter(request, "installments")))
-                    .setPaymentMethodId(RequestUtils.getBodyParameter(request, "payment_method"))
-                    .setIssuerId(RequestUtils.getBodyParameter(request, "issuer_id"))
+                    .setInstallments(Integer.parseInt(RequestUtil.getBodyParameter(request, "installments")))
+                    .setPaymentMethodId(RequestUtil.getBodyParameter(request, "payment_method"))
+                    .setIssuerId(RequestUtil.getBodyParameter(request, "issuer_id"))
                     .setPayer(new com.mercadopago.resources.datastructures.payment.Payer()
-                            .setEmail(RequestUtils.getBodyParameter(request, "email")));
+                            .setEmail(RequestUtil.getBodyParameter(request, "email")));
 
             payment.save();
         } catch (Exception e) {
@@ -80,7 +77,7 @@ public class EndpointController {
         System.out.println("processPayment()");
         System.out.println(request.body());
 
-        //RequestUtils.getBodyParameter(request, "payment_status");
+        //RequestUtil.getBodyParameter(request, "payment_status");
 
         System.out.println("payment status = " + request.queryParams("payment_status"));
         System.out.println("preference id = " + request.queryParams("preference_id"));

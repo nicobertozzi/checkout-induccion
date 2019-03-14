@@ -1,11 +1,10 @@
 package utils;
 
-import enums.Json;
 import spark.Request;
 
-public class RequestUtils {
+public class RequestUtil {
 
-    private RequestUtils() {}
+    private RequestUtil() {}
 
     public static <T> T getBodyParameter(Request request, String parameter) {
         try {
