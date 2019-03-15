@@ -9,6 +9,8 @@ Clase para la configuracion
 public class Configuration {
 
     public static void configureSpark() {
+        System.out.println(" >> Doing Spark's configuration...");
+
         // Cambiamos a un puerto mas amigable...
         Spark.port(9999);
 
@@ -18,7 +20,7 @@ public class Configuration {
             resp.header("Access-Control-Allow-Methods", "GET");
         });
 
-        System.out.println(">> Spark's configuration done!");
+        System.out.println(" >> Spark's configuration done!");
     }
 
 }

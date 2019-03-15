@@ -2,15 +2,10 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Checkout (Inducción) [React App]</title>
+    <title>Checkout (Inducción)</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <script src="https://secure.mlstatic.com/sdk/javascript/v1/mercadopago.js"></script>
-    <script type="text/javascript">
-        Mercadopago.setPublishableKey("[[${publicKey}]]");
-    </script>
 
     <style>
         body {
@@ -146,41 +141,36 @@
             </div>
             <div align="left">
                 <form id="formCreatePreference" method="POST" action="/create-preference">
-                    <div class="container">
-                        <label for="payerName"><b>Nombre</b></label>
-                        <input value="Nico" id="payerName" type="text" placeholder="Nombre del comprador" name="payerName" required style="width: 200px;">
-                        <br />
-                        <label for="payerSurname"><b>Apellido</b></label>
-                        <input value="Bertozzi" id="payerSurname" type="text" placeholder="Apellido del comprador" name="payerSurname" required style="width: 200px;">
-                        <br />
-                        <label for="payerEmail"><b>E-mail</b></label>
-                        <input value="nico@bertozzi.com" id="payerEmail" type="email" placeholder="E-mail del comprador" name="payerEmail" required style="width: 300px;">
-                        <br />
-                        <label for="payerTypeDNI"><b>Tipo de DNI</b></label>
-                        <select id="payerTypeDNI" name="payerTypeDNI" required>
-                            <option value=""></option>
-                            <option selected value="DNI">DNI</option>
-                        </select>
-                        <br />
-                        <label for="payerNumberDNI"><b>Número de DNI</b></label>
-                        <input value="32978330" id="payerNumberDNI" type="number" placeholder="Número" name="payerNumberDNI" required style="width: 100px;">
-                        <br />
-                        <label for="itemTitle"><b>Producto</b></label>
-                        <input value="Algo muy codiciado" id="itemTitle" type="text" placeholder="Titulo" name="itemTitle" required style="width: 200px;">
-                        <label for="itemUnitPrice"><b>Precio Unitario</b></label>
-                        <input value="500" id="itemUnitPrice" type="number" placeholder="Precio" name="itemUnitPrice" required style="width: 80px;">
-                        <label for="itemQuantity"><b>Cantidad</b></label>
-                        <input value="1" id="itemQuantity" type="number" placeholder="Cantidad" name="itemQuantity" required style="width: 60px;">
-                        <br />
-                        <hr>
+                    <label for="payerName"><b>Nombre: </b></label>
+                    <input value="Nico" id="payerName" type="text" placeholder="Nombre del comprador" name="payerName" required size="20">
+                    <br />
+                    <label for="payerSurname"><b>Apellido: </b></label>
+                    <input value="Bertozzi" id="payerSurname" type="text" placeholder="Apellido del comprador" name="payerSurname" required size="20">
+                    <br />
+                    <label for="payerEmail"><b>E-mail: </b></label>
+                    <input value="test_user_19562067@testuser.com" id="payerEmail" type="email" placeholder="algo@otra-cosa.com" name="payerEmail" required size="40">
+                    <br />
+                    <label for="payerTypeDNI"><b>Tipo de DNI: </b></label>
+                    <select id="payerTypeDNI" name="payerTypeDNI" required>
+                        <option value=""></option>
+                        <option selected value="DNI">DNI</option>
+                    </select>
+                    <label for="payerNumberDNI"><b>Número: </b></label>
+                    <input value="32978330" id="payerNumberDNI" type="text" placeholder="Número" name="payerNumberDNI" required size="10">
+                    <br />
+                    <label for="itemTitle"><b>Producto: </b></label>
+                    <input value="Algo muy codiciado" id="itemTitle" type="text" placeholder="Titulo" name="itemTitle" required size="30">
+                    <label for="itemUnitPrice"><b>Precio unitario: </b></label>
+                    <input value="500" id="itemUnitPrice" type="text" placeholder="Precio" name="itemUnitPrice" required size="10">
+                    <label for="itemQuantity"><b>Cantidad: </b></label>
+                    <input value="1" id="itemQuantity" type="text" placeholder="Cantidad" name="itemQuantity" required size="4">
 
-                        <div>
-                            <p th:if="${preferenceCreated}">Para ver la Preferencia generada ir al <a href="/">Inicio</a>.</p>
-                            <p th:unless="${preferenceCrated}"></p>
-                        </div>
-
-                        <button type="submit" class="createbtn">Crear</button>
+                    <div>
+                        <p th:if="${preferenceCreated}">Para ver la Preferencia generada ir al <a href="/">Inicio</a>.</p>
+                        <p th:unless="${preferenceCrated}"></p>
                     </div>
+
+                    <button type="submit" class="createbtn">Crear</button>
                 </form>
             </div>
         </fieldset>

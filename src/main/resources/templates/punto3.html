@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Checkout (Inducción) [React App]</title>
+    <title>Checkout (Inducción)</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -107,46 +107,45 @@
                 <h4><u>Punto 3</u>: Flujo de pago (v1)</h4>
             </div>
             <div align="left">
-                <form id="formProcessPayment" name="formProcessPayment" method="POST" action="/pay-preference">
-                    <ul align="left">
+                <form id="formProcessPayment" name="formProcessPayment" method="POST" action="/process-payment">
+                    <ul>
                         <li>
-                            <label htmlFor="email">E-mail: </label>
-                            <input value="nico@bertozzi.com" id="email" name="email" type="email" placeholder="algo@otra-cosa.com" style="width: 300px" />
+                            <label for="email">Email: </label>
+                            <input value="test_user_19562067@testuser.com" id="email" name="email" type="email" placeholder="algo@otra-cosa.com" size="40"/>
                         </li>
                         <li>
                             <label htmlFor="amount">Monto: </label>
-                            <input value="700" id="amount" name="amount" placeholder="100" style="width: 70px" />
+                            <input value="500" id="amount" name="amount" placeholder="100" size="10"/>
                         </li>
                         <li>
-                            <label htmlFor="cardNumber">Numero de la tarjeta: </label>
-                            <input value="4509953566233704" type="text" id="cardNumber" data-checkout="cardNumber" placeholder="4509 9535 6623 3704" maxLength="16" />
-
-                            <label htmlFor="installments"> Cuotas: </label>
+                            <label for="cardNumber">Nº de Tarjeta: </label>
+                            <input size="20" type="text" value="4509953566233704" id="cardNumber" data-checkout="cardNumber" placeholder="4509 9535 6623 3704" onselectstart="return false" onpaste="return false" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete=off />
+                            <label for="securityCode">Código de Seguridad: </label>
+                            <input size="4" type="text" value="143" id="securityCode" data-checkout="securityCode" placeholder="123" onselectstart="return false" onpaste="return false" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete=off />
+                            <label for="installments"> Cuotas: </label>
                             <select id="installments" data-checkout="installments" name="installments"></select>
 
-                            <label htmlFor="securityCode"> Codigo de seguridad: </label>
-                            <input value="143" type="text" id="securityCode" data-checkout="securityCode" placeholder="123" maxLength="4" style="width: 30px" />
+                            <input type="hidden" id="issuerId" name="issuerId" />
+                            <input type="hidden" id="paymentMethod" name="paymentMethod" />
                         </li>
                         <li>
-                            <label htmlFor="cardExpirationMonth">Mes de expiracion: </label>
-                            <input value="12" type="text" id="cardExpirationMonth" data-checkout="cardExpirationMonth" placeholder="12" maxLength="2" style="width: 15px" />
-
-                            <label htmlFor="cardExpirationYear"> Año: </label>
-                            <input value="20" type="text" id="cardExpirationYear" data-checkout="cardExpirationYear" placeholder="2020" maxLength="4" style="width: 30px" />
+                            <label for="cardExpirationMonth">Mes de expiración: </label>
+                            <input size="2" type="text" value="12" id="cardExpirationMonth" data-checkout="cardExpirationMonth" placeholder="12" onselectstart="return false" onpaste="return false" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete=off />
+                            <label for="cardExpirationYear">Año de expiración: </label>
+                            <input size="4" type="text" value="2020" id="cardExpirationYear" data-checkout="cardExpirationYear" placeholder="2015" onselectstart="return false" onpaste="return false" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete=off />
                         </li>
                         <li>
-                            <label htmlFor="cardholderName">Nombre y Apellido: </label>
-                            <input value="Nico Bertozzi" type="text" id="cardholderName" data-checkout="cardholderName" placeholder="Como aparece en la tarjeta" style="width: 200px" />
+                            <label for="cardholderName">Nombre en la tarjeta: </label>
+                            <input size="40" type="text" value="Nico Bertozzi" id="cardholderName" data-checkout="cardholderName" placeholder="APRO" />
                         </li>
                         <li>
-                            <label htmlFor="docType">Tipo de documento: </label>
+                            <label for="docType">Tipo de DNI: </label>
                             <select id="docType" data-checkout="docType"></select>
-
-                            <label htmlFor="docNumber"> Numero: </label>
-                            <input value="32978330" type="text" id="docNumber" data-checkout="docNumber" placeholder="32978330" maxLength="8" style="width: 60px" />
+                            <label for="docNumber">Número: </label>
+                            <input size="10" type="text" value="32978330" id="docNumber" data-checkout="docNumber" placeholder="12345678" />
                         </li>
                     </ul>
-                    <input type="hidden" id="paymentMethod" name="paymentMethod" />
+                    <br />
                     <input type="submit" value="Pagar!"/>
                 </form>
             </div>
@@ -206,10 +205,23 @@
       // el componente paymentMethodId ya existia en el form, por eso solamente lo buscamos y le seteamos el ID obtenido...
       var $paymentMethod = document.querySelector('#paymentMethod');
       $paymentMethod.setAttribute('value', response[0].id);
+
+      Mercadopago.getIssuers(response[0].id, issuersHandler);
     } else {
       document.querySelector("input[name=paymentMethod]").value = (response[0] !== undefined ? response[0].id : "");
     }
   };
+
+  // Metodo para obtener el Issuer ID (identificador del banco)
+  function issuersHandler(status, response) {
+    if(status == 200) {
+        var $issuerId = document.querySelector('#issuerId');
+        issuerId.setAttribute('value', response[0].id);
+        console.log('id issuer seteado!');
+    } else {
+        document.querySelector("input[name=issuerId]").value = (response[0] !== undefined ? response[0].id : "");
+    }
+  }
 
   function setInstallmentInfo(status, response) {
     if (status == 200) {

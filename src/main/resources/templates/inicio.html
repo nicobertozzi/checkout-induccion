@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Checkout (Inducción) [React App]</title>
+    <title>Checkout (Inducción)</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -107,6 +107,9 @@
                     <br/>
                     <label><b><u>Init point</u>: </b></label>
                     <a id="init-point" th:href="${preferenceInitPoint}" target="_blank"><i>[[${preferenceInitPoint}]]</i></a>
+                    <br/>
+                    <label><b><u>Sandbox Init point</u>: </b></label>
+                    <a id="sandbox-init-point" th:href="${preferenceSandboxInitPoint}" target="_blank"><i>[[${preferenceSandboxInitPoint}]]</i></a>
                     <br/>
                     <label><b><u>Nombre</u>: </b></label>
                     <span id="name"><i>[[${payerName}]]</i></span>

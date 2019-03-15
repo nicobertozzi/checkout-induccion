@@ -5,7 +5,7 @@ public class Main {
     public static void main(final String[] args) throws Exception {
         new RestEndpoint().init();
 
-        System.out.println(">> Server is running...");
+        System.out.println(" >>>> Server is running...");
     }
 
 }

@@ -24,6 +24,7 @@ public class RestEndpoint implements SparkApplication {
         try {
             Configuration.configureSpark();
             Credentials.configureCredentials();
+            //Credentials.configureModeAccessToken(Credentials.Environment.SANDBOX);
 
             renderScreensDefinition();
             endpointsDefinition();
@@ -50,11 +51,11 @@ public class RestEndpoint implements SparkApplication {
         // Para el Punto 1 [Crear la preference]
         Spark.post("/create-preference", EndpointController::createPreference, new JsonTransformer());
 
-        // Para el Punto 3 [Flujo de pago (v1)] y Punto 4 [Web Tokenize (v2)]
-        Spark.post("/pay-preference", EndpointController::payPreference, new JsonTransformer());
+        // Para el Punto 3 [Flujo de Pago (v1)] y Punto 4 [Web Tokenize (v2)]
+        Spark.post("/process-payment", EndpointController::processPayment, new JsonTransformer());
 
         // Para el Punto 5 [Web Payment (v2)]
-        Spark.post("/process-payment", EndpointController::processPayment, new JsonTransformer());
+        Spark.get("/finish-payment-process", EndpointController::finishPaymentProcess, new JsonTransformer());
     }
 
     private static void exceptionHandler(Exception exception, Request request, Response response) {

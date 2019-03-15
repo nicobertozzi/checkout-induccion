@@ -2,9 +2,11 @@ package controllers;
 
 import com.mercadopago.resources.Payment;
 import com.mercadopago.resources.Preference;
+import com.mercadopago.resources.datastructures.preference.BackUrls;
 import com.mercadopago.resources.datastructures.preference.Identification;
 import com.mercadopago.resources.datastructures.preference.Item;
 import com.mercadopago.resources.datastructures.preference.Payer;
+import constants.Credentials;
 import model.PreferenceModel;
 import spark.Request;
 import spark.Response;
@@ -37,6 +39,11 @@ public class EndpointController {
                     .setCurrencyId("ARS")
                     .setUnitPrice(Float.parseFloat(RequestUtil.getBodyParameter(request, "itemUnitPrice"))));
 
+            preference.setBackUrls(new BackUrls(
+                    "localhost:9999/punto1",
+                    "localhost:9999/",
+                    "localhost:9999/punto5"));
+
             preference.save();
 
             // Si esta bien, recien ahi reemplazamos...
@@ -48,20 +55,36 @@ public class EndpointController {
         return preference;
     }
 
-    public static Object payPreference(Request request, Response response) {
-        System.out.println("payPreference()");
+    public static Object processPayment(Request request, Response response) {
+        System.out.println("processPayment()");
         System.out.println(request.body());
 
         Payment payment = new Payment();
         try {
-            payment.setTransactionAmount(Float.parseFloat(RequestUtil.getBodyParameter(request, "amount")))
-                    .setToken(RequestUtil.getBodyParameter(request, "token"))
+            payment.setToken(RequestUtil.getBodyParameter(request, "token"))
                     .setDescription("Algo muy codiciado")
                     .setInstallments(Integer.parseInt(RequestUtil.getBodyParameter(request, "installments")))
                     .setPaymentMethodId(RequestUtil.getBodyParameter(request, "payment_method"))
-                    .setIssuerId(RequestUtil.getBodyParameter(request, "issuer_id"))
-                    .setPayer(new com.mercadopago.resources.datastructures.payment.Payer()
-                            .setEmail(RequestUtil.getBodyParameter(request, "email")));
+                    .setIssuerId(RequestUtil.getBodyParameter(request, "issuer_id"));
+
+            // Si no llega como parametro (punto 4) deberia buscar la preference??
+            // por ahora lo hago a pata...
+            if(RequestUtil.getBodyParameter(request, "amount") == null) {
+                Double transactionAmount = PreferenceModel.preference.getItems().stream()
+                        .mapToDouble(i -> (i.getQuantity() * i.getUnitPrice()))
+                        .sum();
+
+                payment.setTransactionAmount(transactionAmount.floatValue());
+            } else {
+                payment.setTransactionAmount(Float.parseFloat(RequestUtil.getBodyParameter(request, "amount")));
+            }
+            com.mercadopago.resources.datastructures.payment.Payer payer = new com.mercadopago.resources.datastructures.payment.Payer();
+            if(RequestUtil.getBodyParameter(request, "email") == null) {
+                payer.setEmail(PreferenceModel.preference.getPayer().getEmail());
+            } else {
+                payer.setEmail(RequestUtil.getBodyParameter(request, "email"));
+            }
+            payment.setPayer(payer);
 
             payment.save();
         } catch (Exception e) {
@@ -73,18 +96,20 @@ public class EndpointController {
         return payment;
     }
 
-    public static Object processPayment(Request request, Response response) {
-        System.out.println("processPayment()");
+    public static Object finishPaymentProcess(Request request, Response response) {
+        System.out.println("finishPaymentProcess()");
         System.out.println(request.body());
 
-        //RequestUtil.getBodyParameter(request, "payment_status");
-
-        System.out.println("payment status = " + request.queryParams("payment_status"));
-        System.out.println("preference id = " + request.queryParams("preference_id"));
-        System.out.println("back url = " + request.queryParams("back_url"));
-        System.out.println("merchant order id = " + request.queryParams("merchant_order_id"));
-        System.out.println("payment status detail = " + request.queryParams("payment_status_detail"));
-        System.out.println("payment id = " + request.queryParams("payment_id"));
+        try {
+            System.out.println("payment status = " + request.queryParams("payment_status"));
+            System.out.println("preference id = " + request.queryParams("preference_id"));
+            System.out.println("back url = " + request.queryParams("back_url"));
+            System.out.println("merchant order id = " + request.queryParams("merchant_order_id"));
+            System.out.println("payment status detail = " + request.queryParams("payment_status_detail"));
+            System.out.println("payment id = " + request.queryParams("payment_id"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         return response;
     }

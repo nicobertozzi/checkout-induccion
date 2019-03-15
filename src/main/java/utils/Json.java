@@ -40,7 +40,9 @@ public enum Json {
             JSONObject json = new JSONObject();
             for(String cadaBin : body.split("&")) {
                 String[] valor = cadaBin.split("=");
-                json.put(valor[0], valor[1]);
+
+                // Por si no estan presentes todos los valores...
+                json.put(valor[0], valor.length > 1 ? valor[1] : "");
             }
 
             body = json.toString();

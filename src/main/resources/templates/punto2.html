@@ -2,14 +2,15 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Checkout (Inducción) [React App]</title>
+    <title>Checkout (Inducción)</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <script src="https://secure.mlstatic.com/sdk/javascript/v1/mercadopago.js"></script>
+
     <script type="text/javascript">
-        Mercadopago.setPublishableKey("[[${publicKey}]]");
+        (function(){function $MPC_load(){window.$MPC_loaded !== true && (function(){var s = document.createElement("script");s.type = "text/javascript";s.async = true;s.src = document.location.protocol+"//secure.mlstatic.com/mptools/render.js";var x = document.getElementsByTagName('script')[0];x.parentNode.insertBefore(s, x);window.$MPC_loaded = true;})();}window.$MPC_loaded !== true ? (window.attachEvent ?window.attachEvent('onload', $MPC_load) : window.addEventListener('load', $MPC_load, false)) : null;})();
     </script>
 
     <style>
@@ -108,10 +109,10 @@
             </div>
             <div align="center">
                 <div th:if="${preferenceCreated}">
-                    <a th:href="${preferenceInitPoint}" name="MP-Checkout" className="orange-S-Sq-Ar" mp-mode="model">MODEL</a>
-                    <a th:href="${preferenceInitPoint}" name="MP-Checkout" className="lightblue-M-Ov-ArOn" mp-mode="popup">POPUP</a>
-                    <a th:href="${preferenceInitPoint}" name="MP-Checkout" className="green-L-Rn" mp-mode="blank">BLANK</a>
-                    <a th:href="${preferenceInitPoint}" name="MP-Checkout" className="blue-S-Sq-Ar" mp-mode="redirect">REDIRECT</a>
+                    <a th:href="${preferenceInitPoint}" name="MP-Checkout" class="orange-S-Sq-Ar" mp-mode="model">MODEL</a>
+                    <a th:href="${preferenceInitPoint}" name="MP-Checkout" class="lightblue-M-Ov-ArOn" mp-mode="popup">POPUP</a>
+                    <a th:href="${preferenceInitPoint}" name="MP-Checkout" class="green-L-Rn" mp-mode="blank">BLANK</a>
+                    <a th:href="${preferenceInitPoint}" name="MP-Checkout" class="blue-S-Sq-Ar" mp-mode="redirect">REDIRECT</a>
                 </div>
                 <div th:unless="${preferenceCreated}">
                     <p>No existe una Preferencia. Genere una desde <a href="/punto1">aquí</a>.</p>
@@ -135,9 +136,5 @@
             </div>
         </fieldset>
     </div>
-
-    <script type="text/javascript">
-        (function(){function $MPC_load(){window.$MPC_loaded !== true && (function(){var s = document.createElement("script");s.type = "text/javascript";s.async = true;s.src = document.location.protocol+"//secure.mlstatic.com/mptools/render.js";var x = document.getElementsByTagName('script')[0];x.parentNode.insertBefore(s, x);window.$MPC_loaded = true;})();}window.$MPC_loaded !== true ? (window.attachEvent ?window.attachEvent('onload', $MPC_load) : window.addEventListener('load', $MPC_load, false)) : null;})();
-    </script>
 </body>
 </html>

@@ -17,6 +17,7 @@ public class RenderScreenController {
         if(PreferenceModel.preference.getId() != null) {
             mapa.put("preferenceId", PreferenceModel.preference.getId());
             mapa.put("preferenceInitPoint", PreferenceModel.preference.getInitPoint());
+            //mapa.put("preferenceSandboxInitPoint", PreferenceModel.preference.getSandboxInitPoint());
 
             if(PreferenceModel.preference.getPayer() != null) {
                 mapa.put("payerName", PreferenceModel.preference.getPayer().getName());
@@ -39,7 +40,6 @@ public class RenderScreenController {
         HashMap<String, Object> mapa = new HashMap<>();
 
         mapa.put("preferenceCreated", PreferenceModel.preference.getId() != null);
-        mapa.put("publicKey", Credentials.PUBLIC_KEY);
 
         return new ModelAndView(mapa, "punto1");
     }
@@ -50,9 +50,9 @@ public class RenderScreenController {
 
         if(PreferenceModel.preference.getId() != null) {
             mapa.put("preferenceInitPoint", PreferenceModel.preference.getInitPoint());
+            mapa.put("preferenceSandboxInitPoint", PreferenceModel.preference.getSandboxInitPoint());
         }
         mapa.put("preferenceCreated", PreferenceModel.preference.getId() != null);
-        mapa.put("publicKey", Credentials.PUBLIC_KEY);
 
         return new ModelAndView(mapa, "punto2");
     }
@@ -61,7 +61,9 @@ public class RenderScreenController {
         System.out.println("rendering punto3....");
         HashMap<String, Object> mapa = new HashMap<>();
 
-        mapa.put("publicKey", Credentials.PUBLIC_KEY);
+        mapa.put("preferenceCreated", PreferenceModel.preference.getId() != null);
+
+        addPublicKey(mapa);
 
         return new ModelAndView(mapa, "punto3");
     }
@@ -78,7 +80,8 @@ public class RenderScreenController {
             mapa.put("transactionAmount", transactionAmount);
         }
         mapa.put("preferenceCreated", PreferenceModel.preference.getId() != null);
-        mapa.put("publicKey", Credentials.PUBLIC_KEY);
+
+        addPublicKey(mapa);
 
         return new ModelAndView(mapa, "punto4");
     }
@@ -91,9 +94,15 @@ public class RenderScreenController {
             mapa.put("preferenceId", PreferenceModel.preference.getId());
         }
         mapa.put("preferenceCreated", PreferenceModel.preference.getId() != null);
-        mapa.put("publicKey", Credentials.PUBLIC_KEY);
+
+        addPublicKey(mapa);
 
         return new ModelAndView(mapa, "punto5");
+    }
+
+    private static void addPublicKey(HashMap<String, Object> params) {
+        params.put("publicKey", Credentials.PUBLIC_KEY_SANDBOX);
+        //params.put("publicKeyProd", Credentials.PUBLIC_KEY_PROD);
     }
 
 }
