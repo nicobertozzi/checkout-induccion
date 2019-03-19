@@ -142,28 +142,28 @@
             <div align="left">
                 <form id="formCreatePreference" method="POST" action="/create-preference">
                     <label for="payerName"><b>Nombre: </b></label>
-                    <input value="Nico" id="payerName" type="text" placeholder="Nombre del comprador" name="payerName" required size="20">
+                    <input value="Nico" id="payerName" type="text" placeholder="Nombre del comprador" name="payer.name" required size="20">
                     <br />
                     <label for="payerSurname"><b>Apellido: </b></label>
-                    <input value="Bertozzi" id="payerSurname" type="text" placeholder="Apellido del comprador" name="payerSurname" required size="20">
+                    <input value="Bertozzi" id="payerSurname" type="text" placeholder="Apellido del comprador" name="payer.surname" required size="20">
                     <br />
                     <label for="payerEmail"><b>E-mail: </b></label>
-                    <input value="test_user_19562067@testuser.com" id="payerEmail" type="email" placeholder="algo@otra-cosa.com" name="payerEmail" required size="40">
+                    <input value="test_user_19562067@testuser.com" id="payerEmail" type="email" placeholder="algo@otra-cosa.com" name="payer.email" required size="40">
                     <br />
-                    <label for="payerTypeDNI"><b>Tipo de DNI: </b></label>
-                    <select id="payerTypeDNI" name="payerTypeDNI" required>
+                    <label for="payerDocumentType"><b>Tipo de DNI: </b></label>
+                    <select id="payerDocumentType" name="payer.documentType" required>
                         <option value=""></option>
                         <option selected value="DNI">DNI</option>
                     </select>
-                    <label for="payerNumberDNI"><b>Número: </b></label>
-                    <input value="32978330" id="payerNumberDNI" type="text" placeholder="Número" name="payerNumberDNI" required size="10">
+                    <label for="payerDocumentNumber"><b>Número: </b></label>
+                    <input value="32978330" id="payerDocumentNumber" type="text" placeholder="Número" name="payer.documentNumber" required size="10">
                     <br />
                     <label for="itemTitle"><b>Producto: </b></label>
-                    <input value="Algo muy codiciado" id="itemTitle" type="text" placeholder="Titulo" name="itemTitle" required size="30">
+                    <input value="Algo-muy-codiciado" id="itemTitle" type="text" placeholder="Titulo" name="items[0].title" required size="30">
                     <label for="itemUnitPrice"><b>Precio unitario: </b></label>
-                    <input value="500" id="itemUnitPrice" type="text" placeholder="Precio" name="itemUnitPrice" required size="10">
+                    <input value="500" id="itemUnitPrice" type="text" placeholder="Precio" name="items[0].unitPrice" required size="10">
                     <label for="itemQuantity"><b>Cantidad: </b></label>
-                    <input value="1" id="itemQuantity" type="text" placeholder="Cantidad" name="itemQuantity" required size="4">
+                    <input value="1" id="itemQuantity" type="text" placeholder="Cantidad" name="items[0].quantity" required size="4">
 
                     <div>
                         <p th:if="${preferenceCreated}">Para ver la Preferencia generada ir al <a href="/">Inicio</a>.</p>

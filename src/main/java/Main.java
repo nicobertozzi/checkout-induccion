@@ -1,4 +1,4 @@
-import routes.RestEndpoint;
+import router.RestEndpoint;
 
 public class Main {
 

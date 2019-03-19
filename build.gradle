@@ -10,14 +10,16 @@ sourceCompatibility = 1.8
 repositories {
     mavenCentral()
     jcenter()
-    maven { url "http://git.ml.com:8081/nexus/content/repositories/MLGrailsPlugins" }
-    maven { url "http://git.ml.com:8081/nexus/content/groups/Arquitectura" }
 }
 
 dependencies {
     compile(group: 'com.sparkjava', name: 'spark-core', version: '2.7.2')
     compile(group: 'com.sparkjava', name: 'spark-template-thymeleaf', version: '2.7.1')
 
+    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.10.0'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.10.0'
+    compile group: 'log4j', name: 'log4j', version: '1.2.17'
+    
     compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: '2.9.8'
 
     compile 'com.mercadopago:dx-java:1.0.33'

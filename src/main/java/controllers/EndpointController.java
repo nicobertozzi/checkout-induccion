@@ -1,61 +1,45 @@
 package controllers;
 
+import com.mercadopago.exceptions.MPException;
 import com.mercadopago.resources.Payment;
-import com.mercadopago.resources.Preference;
-import com.mercadopago.resources.datastructures.preference.BackUrls;
-import com.mercadopago.resources.datastructures.preference.Identification;
-import com.mercadopago.resources.datastructures.preference.Item;
-import com.mercadopago.resources.datastructures.preference.Payer;
-import constants.Credentials;
+import controllers.handlers.CreatePreferenceRequestHandler;
+import controllers.handlers.RequestHandler;
+import controllers.handlers.RequestHandlerFactory;
+import errors.ErrorMessages;
+import errors.ErrorResponse;
 import model.PreferenceModel;
+import org.apache.http.HttpStatus;
+import services.PreferencesService;
 import spark.Request;
 import spark.Response;
 import utils.RequestUtil;
 
 public class EndpointController {
 
-    /*
-    Creamos una Preference a partir de un Payer e Items...
-     */
-    public static Preference createPreference(Request request, Response response) {
-        System.out.println("createPreference()");
-        System.out.println(request.body());
+    private final PreferencesService preferencesService;
+    private final RequestHandlerFactory requestHandlerFactory;
 
-        Preference preference = new Preference();
-        try {
-            // Creamos un Payer de Test...
-            preference.setPayer(new Payer()
-                    .setName(RequestUtil.getBodyParameter(request, "payerName"))
-                    .setSurname(RequestUtil.getBodyParameter(request, "payerSurname"))
-                    .setEmail(RequestUtil.getBodyParameter(request, "payerEmail"))
-                    .setIdentification(new Identification()
-                            .setType(RequestUtil.getBodyParameter(request, "payerTypeDNI"))
-                            .setNumber(RequestUtil.getBodyParameter(request, "payerNumberDNI"))));
-
-            // Creamos un item para la compra y lo añadimos...
-            preference.appendItem(new Item()
-                    .setTitle(RequestUtil.getBodyParameter(request, "itemTitle"))
-                    .setQuantity(Integer.parseInt(RequestUtil.getBodyParameter(request, "itemQuantity")))
-                    .setCurrencyId("ARS")
-                    .setUnitPrice(Float.parseFloat(RequestUtil.getBodyParameter(request, "itemUnitPrice"))));
-
-            preference.setBackUrls(new BackUrls(
-                    "localhost:9999/punto1",
-                    "localhost:9999/",
-                    "localhost:9999/punto5"));
-
-            preference.save();
-
-            // Si esta bien, recien ahi reemplazamos...
-            PreferenceModel.preference = preference;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return preference;
+    public EndpointController(PreferencesService preferencesService, RequestHandlerFactory requestHandlerFactory) {
+        this.preferencesService = preferencesService;
+        this.requestHandlerFactory = requestHandlerFactory;
     }
 
-    public static Object processPayment(Request request, Response response) {
+    public Object createPreference(Request request, Response response) throws MPException {
+        CreatePreferenceRequestHandler requestHandler = requestHandlerFactory.getCreatePreferenceHandler(request);
+
+        if(!requestHandler.isValid()) {
+            response.status(HttpStatus.SC_BAD_REQUEST);
+            return new ErrorResponse(HttpStatus.SC_BAD_REQUEST, ErrorMessages.BAD_REQUEST, ErrorMessages.INVALID_PREFERENCE_CREATE, requestHandler.getInvalidCause());
+        }
+
+        String initPoint = preferencesService.save(requestHandler.getPreferenceDTO())
+                .getInitPoint();
+        response.status(HttpStatus.SC_OK);
+
+        return initPoint;
+    }
+
+    public Object processPayment(Request request, Response response) {
         System.out.println("processPayment()");
         System.out.println(request.body());
 
@@ -96,7 +80,7 @@ public class EndpointController {
         return payment;
     }
 
-    public static Object finishPaymentProcess(Request request, Response response) {
+    public Object finishPaymentProcess(Request request, Response response) {
         System.out.println("finishPaymentProcess()");
         System.out.println(request.body());
 
