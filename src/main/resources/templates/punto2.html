@@ -92,11 +92,11 @@
                 <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-content">
-                <a href="punto1">Punto 1</a>
-                <a href="punto2">>> Punto 2</a>
-                <a href="punto3">Punto 3</a>
-                <a href="punto4">Punto 4</a>
-                <a href="punto5">Punto 5</a>
+                <a href="punto1"> Punto 1: Creación de la Preference </a>
+                <a href="punto2"><b> Punto 2: Implementación SDK MercadoPago </b></a>
+                <a href="punto3"> Punto 3: Flujo de Pago (v1) </a>
+                <a href="punto4"> Punto 4: Web Tokenize (v2) </a>
+                <a href="punto5"> Punto 5: Web Payment (v2) </a>
             </div>
         </div>
     </div>
@@ -109,28 +109,39 @@
             </div>
             <div align="center">
                 <div th:if="${preferenceCreated}">
-                    <a th:href="${preferenceInitPoint}" name="MP-Checkout" class="orange-S-Sq-Ar" mp-mode="model">MODEL</a>
+                    <a th:href="${preferenceInitPoint}" name="MP-Checkout" class="orange-S-Sq-Ar" mp-mode="modal" onreturn="execute_me_onreturn">MODAL</a>
                     <a th:href="${preferenceInitPoint}" name="MP-Checkout" class="lightblue-M-Ov-ArOn" mp-mode="popup">POPUP</a>
                     <a th:href="${preferenceInitPoint}" name="MP-Checkout" class="green-L-Rn" mp-mode="blank">BLANK</a>
                     <a th:href="${preferenceInitPoint}" name="MP-Checkout" class="blue-S-Sq-Ar" mp-mode="redirect">REDIRECT</a>
+                    <br /><br />
+                    <span id="spanMsg"></span>
                 </div>
                 <div th:unless="${preferenceCreated}">
                     <p>No existe una Preferencia. Genere una desde <a href="/punto1">aquí</a>.</p>
                 </div>
 
                 <script type="text/javascript">
-                    function execute_my_onreturn (json) {
+                    function execute_me_onreturn (json) {
+                        var msg = '';
+
                         if (json.collection_status=='approved'){
-                            alert ('Pago acreditado');
+                            console.log ('Pago acreditado');
+                            msg = 'APROBADO: Pago acreditado.';
                         } else if(json.collection_status=='pending'){
-                            alert ('El usuario no completó el pago');
+                            console.log ('El usuario no completó el pago');
+                            msg = 'PENDIENTE: El usuario no completó el pago.';
                         } else if(json.collection_status=='in_process'){
-                            alert ('El pago está siendo revisado');
+                            console.log ('El pago está siendo revisado');
+                            msg = 'EN PROCESO: El pago está siendo revisado.';
                         } else if(json.collection_status=='rejected'){
-                            alert ('El pago fué rechazado, el usuario puede intentar nuevamente el pago');
+                            console.log ('El pago fué rechazado, puede intentarlo nuevamente');
+                            msg = 'RECHAZADO: El pago fué rechazado, puede intentarlo nuevamente.';
                         } else if(json.collection_status==null){
-                            alert ('El usuario no completó el proceso de pago, no se ha generado ningún pago');
+                            console.log ('No completó el proceso de pago, no se ha generado ningún pago');
+                            msg = 'No completó el proceso de pago, no se ha generado ningún pago.';
                         }
+
+                        document.getElementById('spanMsg').innerHTML = msg;
                     }
                 </script>
             </div>

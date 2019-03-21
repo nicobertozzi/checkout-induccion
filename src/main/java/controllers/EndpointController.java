@@ -1,83 +1,80 @@
 package controllers;
 
+import com.mercadopago.core.MPApiResponse;
 import com.mercadopago.exceptions.MPException;
 import com.mercadopago.resources.Payment;
+import com.mercadopago.resources.Preference;
 import controllers.handlers.CreatePreferenceRequestHandler;
-import controllers.handlers.RequestHandler;
+import controllers.handlers.ProcessPaymentRequestHandler;
 import controllers.handlers.RequestHandlerFactory;
+import errors.ErrorCause;
 import errors.ErrorMessages;
 import errors.ErrorResponse;
-import model.PreferenceModel;
 import org.apache.http.HttpStatus;
+import services.PaymentsService;
 import services.PreferencesService;
 import spark.Request;
 import spark.Response;
+import utils.Json;
 import utils.RequestUtil;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class EndpointController {
 
     private final PreferencesService preferencesService;
+    private final PaymentsService paymentsService;
     private final RequestHandlerFactory requestHandlerFactory;
 
-    public EndpointController(PreferencesService preferencesService, RequestHandlerFactory requestHandlerFactory) {
+    public EndpointController(PreferencesService preferencesService, PaymentsService paymentsService, RequestHandlerFactory requestHandlerFactory) {
         this.preferencesService = preferencesService;
+        this.paymentsService = paymentsService;
+
         this.requestHandlerFactory = requestHandlerFactory;
     }
 
     public Object createPreference(Request request, Response response) throws MPException {
+        System.out.println("createPreference()");
         CreatePreferenceRequestHandler requestHandler = requestHandlerFactory.getCreatePreferenceHandler(request);
 
         if(!requestHandler.isValid()) {
             response.status(HttpStatus.SC_BAD_REQUEST);
-            return new ErrorResponse(HttpStatus.SC_BAD_REQUEST, ErrorMessages.BAD_REQUEST, ErrorMessages.INVALID_PREFERENCE_CREATE, requestHandler.getInvalidCause());
+            return new ErrorResponse(HttpStatus.SC_BAD_REQUEST, ErrorMessages.BAD_REQUEST, ErrorMessages.INVALID_PREFERENCE_CREATION, requestHandler.getInvalidCause());
         }
 
-        String initPoint = preferencesService.save(requestHandler.getPreferenceDTO())
-                .getInitPoint();
+        Preference p = preferencesService.save(requestHandler.getPreferenceDTO());
+        if(p.getId() == null) {
+            MPApiResponse mpa = p.getLastApiResponse();
+            response.status(mpa.getStatusCode());
+
+            return mpa.getJsonElementResponse();
+        }
         response.status(HttpStatus.SC_OK);
 
-        return initPoint;
+        return p.getInitPoint();
     }
 
-    public Object processPayment(Request request, Response response) {
+    public Object processPayment(Request request, Response response) throws MPException {
         System.out.println("processPayment()");
-        System.out.println(request.body());
+        ProcessPaymentRequestHandler requestHandler = requestHandlerFactory.getProcessPaymentHandler(request);
 
-        Payment payment = new Payment();
-        try {
-            payment.setToken(RequestUtil.getBodyParameter(request, "token"))
-                    .setDescription("Algo muy codiciado")
-                    .setInstallments(Integer.parseInt(RequestUtil.getBodyParameter(request, "installments")))
-                    .setPaymentMethodId(RequestUtil.getBodyParameter(request, "payment_method"))
-                    .setIssuerId(RequestUtil.getBodyParameter(request, "issuer_id"));
-
-            // Si no llega como parametro (punto 4) deberia buscar la preference??
-            // por ahora lo hago a pata...
-            if(RequestUtil.getBodyParameter(request, "amount") == null) {
-                Double transactionAmount = PreferenceModel.preference.getItems().stream()
-                        .mapToDouble(i -> (i.getQuantity() * i.getUnitPrice()))
-                        .sum();
-
-                payment.setTransactionAmount(transactionAmount.floatValue());
-            } else {
-                payment.setTransactionAmount(Float.parseFloat(RequestUtil.getBodyParameter(request, "amount")));
-            }
-            com.mercadopago.resources.datastructures.payment.Payer payer = new com.mercadopago.resources.datastructures.payment.Payer();
-            if(RequestUtil.getBodyParameter(request, "email") == null) {
-                payer.setEmail(PreferenceModel.preference.getPayer().getEmail());
-            } else {
-                payer.setEmail(RequestUtil.getBodyParameter(request, "email"));
-            }
-            payment.setPayer(payer);
-
-            payment.save();
-        } catch (Exception e) {
-            e.printStackTrace();
+        if(!requestHandler.isValid()) {
+            response.status(HttpStatus.SC_BAD_REQUEST);
+            return new ErrorResponse(HttpStatus.SC_BAD_REQUEST, ErrorMessages.BAD_REQUEST, ErrorMessages.INVALID_PAYMENT_PROCESSING, requestHandler.getInvalidCause());
         }
 
-        System.out.println("Estado: " + payment.getStatus());
+        Payment p = paymentsService.save(requestHandler.getPaymentDTO());
+        if(p.getId() == null) {
+            MPApiResponse mpa = p.getLastApiResponse();
+            response.status(mpa.getStatusCode());
 
-        return payment;
+            return mpa.getJsonElementResponse();
+        }
+        response.status(HttpStatus.SC_OK);
+
+        return p;
     }
 
     public Object finishPaymentProcess(Request request, Response response) {

@@ -9,20 +9,13 @@ import com.mercadopago.resources.datastructures.preference.Payer;
 import model.PreferenceModel;
 import model.dto.ItemDTO;
 import model.dto.PreferenceDTO;
-import org.apache.log4j.Logger;
-
-import java.util.Map;
 
 public class PreferencesService {
-
-    private static Logger log = Logger.getLogger(PreferencesService.class);
 
     /*
     Creamos una Preference a partir de un Payer e Items...
      */
     public static Preference save(PreferenceDTO preferenceDTO) throws MPException {
-        log.info("Save Preference");
-
         Preference preference = new Preference();
 
         // Creamos un Payer de Test...
@@ -44,9 +37,9 @@ public class PreferencesService {
         }
 
         preference.setBackUrls(new BackUrls(
-                "localhost:9999/punto1",
-                "localhost:9999/",
-                "localhost:9999/punto5"));
+                "/punto1",
+                "/",
+                "/punto5"));
 
         preference.save();
 

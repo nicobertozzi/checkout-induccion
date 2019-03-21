@@ -2,14 +2,10 @@ package controllers;
 
 import constants.Credentials;
 import model.PreferenceModel;
-import model.dto.ItemDTO;
-import model.dto.PayerDTO;
-import model.dto.PreferenceDTO;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class RenderScreenController {
@@ -106,7 +102,7 @@ public class RenderScreenController {
 
     private static void addPublicKey(HashMap<String, Object> params) {
         params.put("publicKey", Credentials.PUBLIC_KEY_SANDBOX);
-        //params.put("publicKeyProd", Credentials.PUBLIC_KEY_PROD);
+        params.put("publicKeyProd", Credentials.PUBLIC_KEY_PROD);
     }
 
 }

@@ -1,5 +1,6 @@
 package services.providers;
 
+import services.PaymentsService;
 import services.PreferencesService;
 
 /**
@@ -11,6 +12,10 @@ public class ServicesProvider {
 
     public static PreferencesService getPreferencesService() {
         return new PreferencesService();
+    }
+
+    public static PaymentsService getPaymentsService() {
+        return new PaymentsService();
     }
 
 }

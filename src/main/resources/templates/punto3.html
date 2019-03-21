@@ -91,11 +91,11 @@
                 <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-content">
-                <a href="punto1">Punto 1</a>
-                <a href="punto2">Punto 2</a>
-                <a href="punto3">>> Punto 3</a>
-                <a href="punto4">Punto 4</a>
-                <a href="punto5">Punto 5</a>
+                <a href="punto1"> Punto 1: Creación de la Preference </a>
+                <a href="punto2"> Punto 2: Implementación SDK MercadoPago </a>
+                <a href="punto3"><b> Punto 3: Flujo de Pago (v1) </b></a>
+                <a href="punto4"> Punto 4: Web Tokenize (v2) </a>
+                <a href="punto5"> Punto 5: Web Payment (v2) </a>
             </div>
         </div>
     </div>
@@ -104,45 +104,58 @@
     <div>
         <fieldset>
             <div align="center">
-                <h4><u>Punto 3</u>: Flujo de pago (v1)</h4>
+                <h4><u>Punto 3</u>: Flujo de Pago (v1)</h4>
             </div>
             <div align="left">
                 <form id="formProcessPayment" name="formProcessPayment" method="POST" action="/process-payment">
                     <ul>
                         <li>
-                            <label for="email">Email: </label>
-                            <input value="test_user_19562067@testuser.com" id="email" name="email" type="email" placeholder="algo@otra-cosa.com" size="40"/>
+                            <label for="description">Description: </label>
+                            <input value="Algo muy codiciado 2" id="description" name="description" type="text" size="40"/>
                         </li>
                         <li>
                             <label htmlFor="amount">Monto: </label>
                             <input value="500" id="amount" name="amount" placeholder="100" size="10"/>
                         </li>
+                        <br />
                         <li>
                             <label for="cardNumber">Nº de Tarjeta: </label>
                             <input size="20" type="text" value="4509953566233704" id="cardNumber" data-checkout="cardNumber" placeholder="4509 9535 6623 3704" onselectstart="return false" onpaste="return false" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete=off />
-                            <label for="securityCode">Código de Seguridad: </label>
-                            <input size="4" type="text" value="143" id="securityCode" data-checkout="securityCode" placeholder="123" onselectstart="return false" onpaste="return false" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete=off />
-                            <label for="installments"> Cuotas: </label>
-                            <select id="installments" data-checkout="installments" name="installments"></select>
-
-                            <input type="hidden" id="issuerId" name="issuerId" />
-                            <input type="hidden" id="paymentMethod" name="paymentMethod" />
+                            <img id="paymentMethodImg" style="vertical-align: middle" src="" />
+                            <input type="hidden" id="paymentMethodId" name="payment_method_id" />
                         </li>
                         <li>
                             <label for="cardExpirationMonth">Mes de expiración: </label>
                             <input size="2" type="text" value="12" id="cardExpirationMonth" data-checkout="cardExpirationMonth" placeholder="12" onselectstart="return false" onpaste="return false" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete=off />
                             <label for="cardExpirationYear">Año de expiración: </label>
                             <input size="4" type="text" value="2020" id="cardExpirationYear" data-checkout="cardExpirationYear" placeholder="2015" onselectstart="return false" onpaste="return false" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete=off />
+
+                            <label for="securityCode">Código de Seguridad: </label>
+                            <input size="4" type="text" value="143" id="securityCode" data-checkout="securityCode" placeholder="123" onselectstart="return false" onpaste="return false" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete=off />
+                        </li>
+                        <li>
+                            <label for="issuers">Banco: </label>
+                            <select id="issuers" name="issuer_id"></select>
+                            <img id="issuerImg" style="vertical-align: middle" src="" />
+                        </li>
+                        <li>
+                            <label for="installments"> Cuotas: </label>
+                            <select id="installments" data-checkout="installments" name="installments"></select>
                         </li>
                         <li>
                             <label for="cardholderName">Nombre en la tarjeta: </label>
                             <input size="40" type="text" value="Nico Bertozzi" id="cardholderName" data-checkout="cardholderName" placeholder="APRO" />
                         </li>
+                        <br />
                         <li>
-                            <label for="docType">Tipo de DNI: </label>
-                            <select id="docType" data-checkout="docType"></select>
+                            <label for="docType">Tipo y Nº de documento: </label>
+                            <select id="docType" data-checkout="docType" />
                             <label for="docNumber">Número: </label>
                             <input size="10" type="text" value="32978330" id="docNumber" data-checkout="docNumber" placeholder="12345678" />
+                        </li>
+                        <li>
+                            <label for="email">Email: </label>
+                            <input value="test_user_19562067@testuser.com" id="email" name="email" type="email" placeholder="algo@otra-cosa.com" size="40"/>
                         </li>
                     </ul>
                     <br />
@@ -159,6 +172,11 @@
   var $cardNumber = document.querySelector('#cardNumber');
   var $amount = document.querySelector('#amount');
   var $installments = document.querySelector('#installments');
+  var $issuers = document.querySelector('#issuers');
+
+  var $paymentMethodId = document.querySelector('#paymentMethodId');
+  var $paymentMethodImg = document.querySelector('#paymentMethodImg');
+  var $issuerImg = document.querySelector('#issuerImg');
 
   // En la documentacion no asignaba en ningun lado el evento...
   $cardNumber.addEventListener('keyup', guessingPaymentMethod);
@@ -166,9 +184,9 @@
   $amount.addEventListener('keyup', guessingPaymentMethod);
 
   function guessingPaymentMethod(event) {
-    if (event.type == "keyup") {
-      if (($cardNumber.value !== undefined && $cardNumber.value.length >= 6)
-        && ($amount.value !== undefined && $amount.value.length >= 0)) {
+    if(event.type == "keyup") {
+      if(($amount.value !== undefined && $amount.value.length >= 0)
+            && ($cardNumber.value !== undefined && $cardNumber.value.length >= 6)) {
         console.log("guessing payment method...");
 
         // var bin = getBin();
@@ -177,15 +195,25 @@
 
         Mercadopago.getPaymentMethod({
           "bin": bin
-        }, setPaymentMethodInfo);
+        }, paymentMethodHandler);
 
         Mercadopago.getInstallments({
           "bin": bin,
           "amount": ($amount.value !== undefined ? $amount.value : 0)
-        }, setInstallmentInfo);
+        }, installmentsHandler);
       } else {
         // borramos las que haya si no cumple con las 2 condiciones...
-        while ($installments.firstChild) {
+
+        $paymentMethodId.setAttribute('value', '');
+        $paymentMethodImg.setAttribute('src', '');
+
+        while($issuers.firstChild) {
+          $issuers.removeChild($issuers.firstChild);
+        }
+
+        $issuerImg.setAttribute('src', '');
+
+        while($installments.firstChild) {
           $installments.removeChild($installments.firstChild);
         }
       }
@@ -194,36 +222,49 @@
         if (bin.length >= 6) {
           Mercadopago.getPaymentMethod({
             "bin": bin
-          }, setPaymentMethodInfo);
+          }, paymentMethodHandler);
         }
       }, 100);
     }
   };
 
-  function setPaymentMethodInfo(status, response) {
+  function paymentMethodHandler(status, response) {
     if (status == 200) {
       // el componente paymentMethodId ya existia en el form, por eso solamente lo buscamos y le seteamos el ID obtenido...
-      var $paymentMethod = document.querySelector('#paymentMethod');
-      $paymentMethod.setAttribute('value', response[0].id);
+      var paymentMethod = response[0];
+      $paymentMethodId.setAttribute('value', paymentMethod.id);
+      $paymentMethodImg.setAttribute('src', paymentMethod.secure_thumbnail);
 
-      Mercadopago.getIssuers(response[0].id, issuersHandler);
+      Mercadopago.getIssuers(paymentMethod.id, issuerHandler);
     } else {
-      document.querySelector("input[name=paymentMethod]").value = (response[0] !== undefined ? response[0].id : "");
+      document.querySelector("input[name=paymentMethodId]").value = (response[0] !== undefined ? response[0].id : "");
     }
   };
 
-  // Metodo para obtener el Issuer ID (identificador del banco)
-  function issuersHandler(status, response) {
+  // Metodo para obtener los Issuer IDs (identificador del banco)
+  function issuerHandler(status, response) {
     if(status == 200) {
-        var $issuerId = document.querySelector('#issuerId');
-        issuerId.setAttribute('value', response[0].id);
-        console.log('id issuer seteado!');
+      // Removemos los hijos que tenga para que no se acumulen...
+      while ($issuers.firstChild) {
+        $issuers.removeChild($issuers.firstChild);
+      }
+      // Recorremos el array para armar los options del select de las cuotas...
+      for (i = 0; i < response.length; i++) {
+        var op = document.createElement('option');
+        op.text = response[i].name;
+        op.value = response[i].id;
+
+        $issuers.add(op, null);
+      }
+      //$issuers.value = '310';
+
+      //$issuerImg.setAttribute('src', response[0].secure_thumbnail);
     } else {
-        document.querySelector("input[name=issuerId]").value = (response[0] !== undefined ? response[0].id : "");
+      //document.querySelector("input[name=issuerId]").value = (response[0] !== undefined ? response[0].id : "");
     }
   }
 
-  function setInstallmentInfo(status, response) {
+  function installmentsHandler(status, response) {
     if (status == 200) {
       // Removemos los hijos que tenga para que no se acumulen...
       while ($installments.firstChild) {

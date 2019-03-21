@@ -16,15 +16,20 @@ dependencies {
     compile(group: 'com.sparkjava', name: 'spark-core', version: '2.7.2')
     compile(group: 'com.sparkjava', name: 'spark-template-thymeleaf', version: '2.7.1')
 
-    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.10.0'
-    compile group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.10.0'
-    compile group: 'log4j', name: 'log4j', version: '1.2.17'
-    
+    compile 'org.json:json:20180813'
+
     compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: '2.9.8'
 
-    compile 'com.mercadopago:dx-java:1.0.33'
+    // Standard validation APIs
+    compile group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
+    // Hibernate validator
+    compile group: 'org.hibernate.validator', name: 'hibernate-validator', version: '6.0.2.Final'
+    compile group: 'org.hibernate', name: 'hibernate-validator-annotation-processor', version: '6.0.2.Final'
+    // Expression language
+    compile group: 'javax.el', name: 'javax.el-api', version: '3.0.0'
+    compile group: 'org.glassfish.web', name: 'javax.el', version: '2.2.6'
 
-    compile 'org.json:json:20180813'
+    compile 'com.mercadopago:dx-java:1.0.33'
 
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }

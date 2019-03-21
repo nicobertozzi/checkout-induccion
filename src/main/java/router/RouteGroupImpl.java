@@ -28,7 +28,7 @@ public class RouteGroupImpl implements RouteGroup {
         Endpoints definition
          */
         RequestHandlerFactory requestHandlerFactory = new RequestHandlerFactory();
-        EndpointController endpointController = new EndpointController(ServicesProvider.getPreferencesService(), requestHandlerFactory);
+        EndpointController endpointController = new EndpointController(ServicesProvider.getPreferencesService(), ServicesProvider.getPaymentsService(), requestHandlerFactory);
 
         // Para el Punto 1 [Crear la preference]
         Spark.post("/create-preference", endpointController::createPreference, new JsonTransformer());
