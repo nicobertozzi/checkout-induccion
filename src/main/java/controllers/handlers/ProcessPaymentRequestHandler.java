@@ -65,21 +65,11 @@ public class ProcessPaymentRequestHandler implements  RequestHandler {
                 this.invalidCauses.add(new ErrorCause(INVALID_EMAIL_CODE, "Invalid payment processing. Payer's email is not a valid email"));
             }
         }
-        if(StringUtils.isBlank(paymentDTO.getAmount())) {
+        if(paymentDTO.getAmount() == null) {
             this.invalidCauses.add(new ErrorCause(INVALID_AMOUNT_CODE, "Invalid payment processing. Amount is null or empty"));
-        } else {
-            try {
-                Double.parseDouble(paymentDTO.getAmount());
-            } catch(NumberFormatException e) {
-                this.invalidCauses.add(new ErrorCause(INVALID_AMOUNT_CODE, "Invalid payment processing. Amount is not a valid number"));
-            }
         }
-        if(StringUtils.isBlank(paymentDTO.getInstallments())) {
+        if(paymentDTO.getInstallments() == null) {
             this.invalidCauses.add(new ErrorCause(INVALID_INSTALLMENTS_CODE, "Invalid payment processing. Installments are null or empty"));
-        } else {
-            if(!StringUtils.isNumeric(paymentDTO.getInstallments())) {
-                this.invalidCauses.add(new ErrorCause(INVALID_INSTALLMENTS_CODE, "Invalid payment processing. Installments are not a valid number"));
-            }
         }
         if(StringUtils.isBlank(paymentDTO.getIssuerId())) {
             this.invalidCauses.add(new ErrorCause(INVALID_ISSUER_ID_CODE, "Invalid payment processing. Issuer ID is null or empty"));

@@ -102,18 +102,14 @@ public class CreatePreferenceRequestHandler implements  RequestHandler {
             boolean someInvalid = false;
             for(ItemDTO item : preferenceDTO.getItems()) {
                 if(StringUtils.isBlank(item.getTitle())) {
-                    this.invalidCauses.add(new ErrorCause(INVALID_TITLE_ITEMS_CODE, "Invalid preference configuration. Title is null or empty"));
                     someInvalid = true;
+                    this.invalidCauses.add(new ErrorCause(INVALID_TITLE_ITEMS_CODE, "Invalid preference configuration. Title is null or empty"));
                 }
-                try {
-                    Double.parseDouble(item.getUnitPrice());
-                } catch(NumberFormatException e) {
+                if(item.getUnitPrice() == null) {
                     someInvalid = true;
                     this.invalidCauses.add(new ErrorCause(INVALID_UNITPRICE_ITEMS_CODE, "Invalid preference configuration. Unit price is not a valid number"));
                 }
-                try {
-                    Double.parseDouble(item.getQuantity());
-                } catch(NumberFormatException e) {
+                if(item.getQuantity() == null) {
                     someInvalid = true;
                     this.invalidCauses.add(new ErrorCause(INVALID_QUANTITY_ITEMS_CODE, "Invalid preference configuration. Quantity is not a valid number"));
                 }

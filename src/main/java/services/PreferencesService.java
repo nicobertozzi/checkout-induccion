@@ -31,20 +31,13 @@ public class PreferencesService {
         for(ItemDTO itemDTO : preferenceDTO.getItems()) {
             preference.appendItem(new Item()
                     .setTitle(itemDTO.getTitle())
-                    .setQuantity(Integer.parseInt(itemDTO.getQuantity()))
+                    .setQuantity(itemDTO.getQuantity())
                     .setCurrencyId("ARS")
-                    .setUnitPrice(Float.parseFloat(itemDTO.getUnitPrice())));
+                    .setUnitPrice(itemDTO.getUnitPrice()));
         }
 
-        preference.setBackUrls(new BackUrls(
-                "/punto1",
-                "/",
-                "/punto5"));
-
-        preference.save();
-
-        // Si esta bien, recien ahi reemplazamos...
-        PreferenceModel.preference = preference;
+        // la dejamos en memoria...
+        PreferenceModel.preference = preference.save();
 
         return preference;
     }

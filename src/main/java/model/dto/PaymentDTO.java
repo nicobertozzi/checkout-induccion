@@ -14,18 +14,18 @@ public class PaymentDTO {
     @Email(message = "is not a valid email")
     String email;
 
-    @NotBlank(message = "is null or empty")
+    @NotNull(message = "is null")
     @Digits(integer = 6, fraction = 2, message = "is not a valid decimal")
-    String amount;
+    @Min(value = 0, message = "is not positive")
+    Float amount;
 
-    @NotBlank(message = "is null or empty")
+    @NotNull(message = "is null")
     @Digits(integer = 2, fraction = 0, message = "is not a valid number")
-    @Min(0)
-    String installments;
+    @Min(value = 1, message = "is not a valid value")
+    Integer installments;
 
     @NotBlank(message = "is null or empty")
     @Digits(integer = 10, fraction = 0, message = "is not a valid number")
-    @Min(0)
     String issuerId;
 
     @NotBlank(message = "is null or empty")
@@ -45,11 +45,11 @@ public class PaymentDTO {
         return email;
     }
 
-    public String getAmount() {
+    public Float getAmount() {
         return amount;
     }
 
-    public String getInstallments() {
+    public Integer getInstallments() {
         return installments;
     }
 

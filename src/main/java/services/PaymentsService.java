@@ -12,7 +12,7 @@ public class PaymentsService {
 
         payment.setToken(paymentDTO.getToken())
                 .setDescription(paymentDTO.getDescription())
-                .setInstallments(Integer.parseInt(paymentDTO.getInstallments()))
+                .setInstallments(paymentDTO.getInstallments())
                 .setPaymentMethodId(paymentDTO.getPaymentMethodId())
                 .setIssuerId(paymentDTO.getIssuerId());
 
@@ -25,7 +25,7 @@ public class PaymentsService {
 
             payment.setTransactionAmount(transactionAmount.floatValue());
         } else {
-            payment.setTransactionAmount(Float.parseFloat(paymentDTO.getAmount()));
+            payment.setTransactionAmount(paymentDTO.getAmount());
         }
         com.mercadopago.resources.datastructures.payment.Payer payer = new com.mercadopago.resources.datastructures.payment.Payer();
         if(paymentDTO.getEmail() == null) {

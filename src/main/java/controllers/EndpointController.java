@@ -7,7 +7,6 @@ import com.mercadopago.resources.Preference;
 import controllers.handlers.CreatePreferenceRequestHandler;
 import controllers.handlers.ProcessPaymentRequestHandler;
 import controllers.handlers.RequestHandlerFactory;
-import errors.ErrorCause;
 import errors.ErrorMessages;
 import errors.ErrorResponse;
 import org.apache.http.HttpStatus;
@@ -15,11 +14,8 @@ import services.PaymentsService;
 import services.PreferencesService;
 import spark.Request;
 import spark.Response;
-import utils.Json;
-import utils.RequestUtil;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 import java.util.Map;
 
 public class EndpointController {
@@ -53,7 +49,10 @@ public class EndpointController {
         }
         response.status(HttpStatus.SC_OK);
 
-        return p.getInitPoint();
+        Map<String, Object> respMap = new HashMap<>();
+        respMap.put("init_point", p.getInitPoint());
+
+        return respMap;
     }
 
     public Object processPayment(Request request, Response response) throws MPException {
@@ -74,12 +73,14 @@ public class EndpointController {
         }
         response.status(HttpStatus.SC_OK);
 
-        return p;
+        Map<String, Object> respMap = new HashMap<>();
+        respMap.put("payment_status", p.getStatus());
+
+        return respMap;
     }
 
     public Object finishPaymentProcess(Request request, Response response) {
         System.out.println("finishPaymentProcess()");
-        System.out.println(request.body());
 
         try {
             System.out.println("payment status = " + request.queryParams("payment_status"));
@@ -92,7 +93,11 @@ public class EndpointController {
             e.printStackTrace();
         }
 
-        return response;
+        Map<String, Object> respMap = new HashMap<>();
+        respMap.put("payment_status", request.queryParams("payment_status"));
+        respMap.put("payment_status_detail", request.queryParams("payment_status_detail"));
+
+        return respMap;
     }
 
 }

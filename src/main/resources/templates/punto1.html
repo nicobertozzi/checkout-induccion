@@ -120,15 +120,15 @@
     <div class="navbar">
         <a href="/">Inicio</a>
         <div class="dropdown">
-            <button class="dropbtn">Puntos
+            <button class="dropbtn">
                 <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-content">
-                <a href="punto1"><b> Punto 1: Creación de la Preference </b></a>
-                <a href="punto2"> Punto 2: Implementación SDK MercadoPago </a>
-                <a href="punto3"> Punto 3: Flujo de Pago (v1) </a>
-                <a href="punto4"> Punto 4: Web Tokenize (v2) </a>
-                <a href="punto5"> Punto 5: Web Payment (v2) </a>
+                <a href="punto1"><b> 1. Creación de la Preference </b></a>
+                <a href="punto2"> 2. Implementación SDK MercadoPago </a>
+                <a href="punto3"> 3. Flujo de Pago (v1) </a>
+                <a href="punto4"> 4. Web Tokenize (v2) </a>
+                <a href="punto5"> 5. Web Payment (v2) </a>
             </div>
         </div>
     </div>
@@ -137,7 +137,7 @@
     <div>
         <fieldset>
             <div align="center">
-                <h4><u>Punto 1</u>: Crear preferencia</h4>
+                <h4><u>Crear la Preference</u></h4>
             </div>
             <div align="left">
                 <form id="formCreatePreference" method="POST" action="/create-preference">
@@ -166,7 +166,7 @@
                     <input value="1" id="itemQuantity" type="text" placeholder="Cantidad" name="items[0].quantity" required size="4">
 
                     <div>
-                        <p th:if="${preferenceCreated}">Para ver la Preferencia generada ir al <a href="/">Inicio</a>.</p>
+                        <p th:if="${preferenceCreated}">Para ver la Preference generada ir al <a href="/">Inicio</a>.</p>
                         <p th:unless="${preferenceCrated}"></p>
                     </div>
 
