@@ -12,6 +12,7 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -40,7 +41,7 @@ public class CreatePreferenceRequestHandler implements  RequestHandler {
     private final String INVALID_UNITPRICE_ITEMS_CODE = "122";
     private final String INVALID_QUANTITY_ITEMS_CODE = "123";
 
-    public CreatePreferenceRequestHandler(Request request) {
+    public CreatePreferenceRequestHandler(Request request) throws IOException {
         this.invalidCauses = new ArrayList<>();
 
         preferenceDTO = RequestUtil.getBodyAsObject(request, PreferenceDTO.class);
@@ -49,6 +50,9 @@ public class CreatePreferenceRequestHandler implements  RequestHandler {
         //manualValidation();
     }
 
+    /**
+     * Automatic validations through annotations in the DTOs
+     */
     private void automaticValidation() {
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         Validator validator = factory.getValidator();
@@ -58,6 +62,9 @@ public class CreatePreferenceRequestHandler implements  RequestHandler {
         }
     }
 
+    /**
+     * Manual validations
+     */
     private void manualValidation() {
         if(preferenceDTO.getPayer() != null) {
             if(StringUtils.isBlank(preferenceDTO.getPayer().getName())) {
@@ -107,11 +114,17 @@ public class CreatePreferenceRequestHandler implements  RequestHandler {
                 }
                 if(item.getUnitPrice() == null) {
                     someInvalid = true;
+                    this.invalidCauses.add(new ErrorCause(INVALID_UNITPRICE_ITEMS_CODE, "Invalid preference configuration. Unit price is null"));
+                } else if(item.getUnitPrice() < 0.01F) {
+                    someInvalid = true;
                     this.invalidCauses.add(new ErrorCause(INVALID_UNITPRICE_ITEMS_CODE, "Invalid preference configuration. Unit price is not a valid number"));
                 }
                 if(item.getQuantity() == null) {
                     someInvalid = true;
-                    this.invalidCauses.add(new ErrorCause(INVALID_QUANTITY_ITEMS_CODE, "Invalid preference configuration. Quantity is not a valid number"));
+                    this.invalidCauses.add(new ErrorCause(INVALID_QUANTITY_ITEMS_CODE, "Invalid preference configuration. Quantity is null"));
+                } else if(item.getQuantity() < 1) {
+                    someInvalid = true;
+                    this.invalidCauses.add(new ErrorCause(INVALID_UNITPRICE_ITEMS_CODE, "Invalid preference configuration. Quantity is not a valid number"));
                 }
                 // si validamos que alguno ya es invalido, cortamos la iteracion...
                 if(someInvalid) break;

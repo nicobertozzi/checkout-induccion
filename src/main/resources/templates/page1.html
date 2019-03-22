@@ -7,6 +7,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(".add-row").click(function() {
+                var prefix = "items[" + $("table tbody").children().size() + "]";
+                var row = "<tr><td><input type='checkbox' name='record'></td><td><input name='" + prefix + ".title'/></td><td><input name='" + prefix + ".unit_price' /></td><td><input name='" + prefix + ".quantity' /></td></tr>";
+
+                $("table tbody").append(row);
+            });
+
+            // Find and remove selected table rows
+            $(".delete-row").click(function(){
+                $("table tbody").find('input[name="record"]').each(function(){
+                    if($(this).is(":checked")){
+                        $(this).parents("tr").remove();
+                    }
+                });
+            });
+        });
+    </script>
+
     <style>
         body {
           font-family: Arial, Helvetica, sans-serif;
@@ -151,26 +172,57 @@
                     <input value="test_user_19562067@testuser.com" id="payerEmail" type="email" placeholder="algo@otra-cosa.com" name="payer.email" required size="40">
                     <br />
                     <label for="payerDocumentType"><b>Tipo de DNI: </b></label>
-                    <select id="payerDocumentType" name="payer.documentType" required>
+                    <select id="payerDocumentType" name="payer.document_type" required>
                         <option value=""></option>
                         <option selected value="DNI">DNI</option>
                     </select>
                     <label for="payerDocumentNumber"><b>Número: </b></label>
-                    <input value="32978330" id="payerDocumentNumber" type="text" placeholder="Número" name="payer.documentNumber" required size="10">
+                    <input value="32978330" id="payerDocumentNumber" type="text" placeholder="Número" name="payer.document_number" required size="10">
                     <br />
-                    <label for="itemTitle"><b>Producto: </b></label>
-                    <input value="Algo-muy-codiciado" id="itemTitle" type="text" placeholder="Titulo" name="items[0].title" required size="30">
-                    <label for="itemUnitPrice"><b>Precio unitario: </b></label>
-                    <input value="500" id="itemUnitPrice" type="text" placeholder="Precio" name="items[0].unitPrice" required size="10">
-                    <label for="itemQuantity"><b>Cantidad: </b></label>
-                    <input value="1" id="itemQuantity" type="text" placeholder="Cantidad" name="items[0].quantity" required size="4">
+                    <label><b>Items: </b></label>
+                    <div align="center">
+                        <div>
+                            <input type="button" class="add-row" value="Agregar">
+                            <button type="button" class="delete-row">Eliminar</button>
+                        </div>
+                        <div>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Título</th>
+                                        <th>Precio Unitario</th>
+                                        <th>Cantidad</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input type='checkbox' name='record'>
+                                        </td>
+                                        <td>
+                                            <input name="items[0].title" value="Algo codiciado" />
+                                        </td>
+                                        <td>
+                                            <input name="items[0].unit_price" value="2000" />
+                                        </td>
+                                        <td>
+                                            <input name="items[0].quantity" value="8" />
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
 
                     <div>
                         <p th:if="${preferenceCreated}">Para ver la Preference generada ir al <a href="/">Inicio</a>.</p>
                         <p th:unless="${preferenceCrated}"></p>
                     </div>
 
-                    <button type="submit" class="createbtn">Crear</button>
+                    <div align="center">
+                        <button type="submit" class="createbtn">Crear</button>
+                    </div>
                 </form>
             </div>
         </fieldset>

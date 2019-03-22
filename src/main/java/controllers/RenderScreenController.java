@@ -17,7 +17,6 @@ public class RenderScreenController {
         if(PreferenceModel.preference.getId() != null) {
             mapa.put("preferenceId", PreferenceModel.preference.getId());
             mapa.put("preferenceInitPoint", PreferenceModel.preference.getInitPoint());
-            //mapa.put("preferenceSandboxInitPoint", PreferenceModel.preference.getSandboxInitPoint());
 
             if(PreferenceModel.preference.getPayer() != null) {
                 mapa.put("payerName", PreferenceModel.preference.getPayer().getName());
@@ -48,7 +47,6 @@ public class RenderScreenController {
 
         if(PreferenceModel.preference.getId() != null) {
             mapa.put("preferenceInitPoint", PreferenceModel.preference.getInitPoint());
-            mapa.put("preferenceSandboxInitPoint", PreferenceModel.preference.getSandboxInitPoint());
         }
         mapa.put("preferenceCreated", PreferenceModel.preference.getId() != null);
 

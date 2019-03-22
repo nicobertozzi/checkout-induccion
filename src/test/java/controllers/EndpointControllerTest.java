@@ -2,7 +2,6 @@ package controllers;
 
 import controllers.handlers.CreatePreferenceRequestHandler;
 import controllers.handlers.ProcessPaymentRequestHandler;
-import controllers.handlers.RequestHandler;
 import controllers.handlers.RequestHandlerFactory;
 import org.junit.Before;
 import org.junit.Test;
@@ -23,8 +22,8 @@ public class EndpointControllerTest {
     private EndpointController controller;
 
     @Before
-    public void setup() {
-        // Mock basic valid request case
+    public void setup() throws Exception {
+        // Simulamos los Service con Mockito porque hay dependencias...
         preferencesService = Mockito.mock(PreferencesService.class);
         paymentsService = Mockito.mock(PaymentsService.class);
 

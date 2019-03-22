@@ -10,7 +10,7 @@ public class RequestHandlerFactory {
      * @param request current request.
      * @return the correct handler for this request.
      */
-    public CreatePreferenceRequestHandler getCreatePreferenceHandler(Request request) {
+    public CreatePreferenceRequestHandler getCreatePreferenceHandler(Request request) throws Exception {
         return new CreatePreferenceRequestHandler(request);
     }
 
@@ -20,7 +20,7 @@ public class RequestHandlerFactory {
      * @param request current request.
      * @return the correct handler for this request.
      */
-    public ProcessPaymentRequestHandler getProcessPaymentHandler(Request request) {
+    public ProcessPaymentRequestHandler getProcessPaymentHandler(Request request) throws Exception {
         return new ProcessPaymentRequestHandler(request);
     }
 

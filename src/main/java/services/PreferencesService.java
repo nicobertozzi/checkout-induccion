@@ -11,6 +11,13 @@ import model.dto.PreferenceDTO;
 
 public class PreferencesService {
 
+    /**
+     * Create a Preference
+     *
+     * @param preferenceDTO PreferenceDTO preference
+     * @return preference
+     * @throws MPException If the MercadoPago API call fails
+     */
     public static Preference save(PreferenceDTO preferenceDTO) throws MPException {
         Preference preference = new Preference();
 
@@ -30,7 +37,7 @@ public class PreferencesService {
                     .setUnitPrice(itemDTO.getUnitPrice()));
         }
 
-        // lo mantengo en memoria...
+        // lo mantengo en "memoria"...
         PreferenceModel.preference = preference.save();
 
         return preference;

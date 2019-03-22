@@ -1,5 +1,6 @@
 package utils;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -21,7 +22,7 @@ public enum Json {
             .registerModule(new JavaTimeModule())
             .disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
 
-    public String convertToJSON(String str) throws Exception {
+    public String convertToJSON(String str) throws UnsupportedEncodingException, JsonProcessingException {
         if(str.length() == 0) {
             return null;
         }
@@ -36,7 +37,7 @@ public enum Json {
         //return JsonUtils.toJson(map);
     }
 
-    public <T> T convertToObject(String str, Class<T> tClass) throws Exception {
+    public <T> T convertToObject(String str, Class<T> tClass) throws IOException {
         if (str.length() == 0) {
             return null;
         }
@@ -44,6 +45,7 @@ public enum Json {
         if(!isJSON(str)) {
             System.out.println("No es un JSON. Lo convertimos...");
             str = convertToJSON(str);
+            System.out.println(str);
         }
 
         return mapper.readValue(str, tClass);

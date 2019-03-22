@@ -31,7 +31,15 @@ public class EndpointController {
         this.requestHandlerFactory = requestHandlerFactory;
     }
 
-    public Object createPreference(Request request, Response response) throws MPException {
+    /**
+     *
+     *
+     * @param request Request
+     * @param response Response
+     * @return Map with response data or an ErrorResponse if the validation fails
+     * @throws Exception
+     */
+    public Object createPreference(Request request, Response response) throws Exception {
         System.out.println("createPreference()");
         CreatePreferenceRequestHandler requestHandler = requestHandlerFactory.getCreatePreferenceHandler(request);
 
@@ -55,7 +63,15 @@ public class EndpointController {
         return responseMap;
     }
 
-    public Object processPayment(Request request, Response response) throws MPException {
+    /**
+     *
+     *
+     * @param request Request
+     * @param response Response
+     * @return Map with response data or an ErrorResponse if the validation fails
+     * @throws Exception
+     */
+    public Object processPayment(Request request, Response response) throws Exception {
         System.out.println("processPayment()");
         ProcessPaymentRequestHandler requestHandler = requestHandlerFactory.getProcessPaymentHandler(request);
 
@@ -79,19 +95,16 @@ public class EndpointController {
         return responseMap;
     }
 
+    /**
+     *
+     *
+     * @param request Request
+     * @param response Response
+     * @return Map with response data
+     * @throws Exception
+     */
     public Object finishPaymentProcess(Request request, Response response) {
         System.out.println("finishPaymentProcess()");
-
-        try {
-            System.out.println("payment status = " + request.queryParams("payment_status"));
-            System.out.println("preference id = " + request.queryParams("preference_id"));
-            System.out.println("back url = " + request.queryParams("back_url"));
-            System.out.println("merchant order id = " + request.queryParams("merchant_order_id"));
-            System.out.println("payment status detail = " + request.queryParams("payment_status_detail"));
-            System.out.println("payment id = " + request.queryParams("payment_id"));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
         Map<String, Object> responseMap = new HashMap<>();
         responseMap.put("payment_status", request.queryParams("payment_status"));
