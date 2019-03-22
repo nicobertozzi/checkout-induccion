@@ -10,8 +10,8 @@ import java.util.HashMap;
 
 public class RenderScreenController {
 
-    public static ModelAndView renderInicio(Request request, Response response) {
-        System.out.println("rendering inicio....");
+    public static ModelAndView renderIndex(Request request, Response response) {
+        System.out.println("Rendering Index....");
         HashMap<String, Object> mapa = new HashMap<>();
 
         if(PreferenceModel.preference.getId() != null) {
@@ -25,27 +25,25 @@ public class RenderScreenController {
                 mapa.put("payerEmail", PreferenceModel.preference.getPayer().getEmail());
             }
             if(!PreferenceModel.preference.getItems().isEmpty()) {
-                mapa.put("itemTitle", PreferenceModel.preference.getItems().get(0).getTitle());
-                mapa.put("itemUnitPrice", PreferenceModel.preference.getItems().get(0).getUnitPrice());
-                mapa.put("itemQuantity", PreferenceModel.preference.getItems().get(0).getQuantity());
+                mapa.put("items", PreferenceModel.preference.getItems());
             }
         }
         mapa.put("preferenceCreated", PreferenceModel.preference.getId() != null);
 
-        return new ModelAndView(mapa, "inicio");
+        return new ModelAndView(mapa, "index");
     }
 
-    public static ModelAndView renderPunto1(Request request, Response response) {
-        System.out.println("rendering punto1....");
+    public static ModelAndView renderPage1(Request request, Response response) {
+        System.out.println("Rendering Page 1....");
         HashMap<String, Object> mapa = new HashMap<>();
 
         mapa.put("preferenceCreated", PreferenceModel.preference.getId() != null);
 
-        return new ModelAndView(mapa, "punto1");
+        return new ModelAndView(mapa, "page1");
     }
 
-    public static ModelAndView renderPunto2(Request request, Response response) {
-        System.out.println("rendering punto2....");
+    public static ModelAndView renderPage2(Request request, Response response) {
+        System.out.println("Rendering Page 2....");
         HashMap<String, Object> mapa = new HashMap<>();
 
         if(PreferenceModel.preference.getId() != null) {
@@ -54,22 +52,22 @@ public class RenderScreenController {
         }
         mapa.put("preferenceCreated", PreferenceModel.preference.getId() != null);
 
-        return new ModelAndView(mapa, "punto2");
+        return new ModelAndView(mapa, "page2");
     }
 
-    public static ModelAndView renderPunto3(Request request, Response response) {
-        System.out.println("rendering punto3....");
+    public static ModelAndView renderPage3(Request request, Response response) {
+        System.out.println("Rendering Page 3....");
         HashMap<String, Object> mapa = new HashMap<>();
 
         mapa.put("preferenceCreated", PreferenceModel.preference.getId() != null);
 
         addPublicKey(mapa);
 
-        return new ModelAndView(mapa, "punto3");
+        return new ModelAndView(mapa, "page3");
     }
 
-    public static ModelAndView renderPunto4(Request request, Response response) {
-        System.out.println("rendering punto4....");
+    public static ModelAndView renderPage4(Request request, Response response) {
+        System.out.println("Rendering Page 4....");
         HashMap<String, Object> mapa = new HashMap<>();
 
         if(PreferenceModel.preference.getId() != null) {
@@ -83,11 +81,11 @@ public class RenderScreenController {
 
         addPublicKey(mapa);
 
-        return new ModelAndView(mapa, "punto4");
+        return new ModelAndView(mapa, "page4");
     }
 
-    public static ModelAndView renderPunto5(Request request, Response response) {
-        System.out.println("rendering punto5....");
+    public static ModelAndView renderPage5(Request request, Response response) {
+        System.out.println("Rendering Page 5....");
         HashMap<String, Object> mapa = new HashMap<>();
 
         if(PreferenceModel.preference.getId() != null) {
@@ -97,7 +95,7 @@ public class RenderScreenController {
 
         addPublicKey(mapa);
 
-        return new ModelAndView(mapa, "punto5");
+        return new ModelAndView(mapa, "page5");
     }
 
     private static void addPublicKey(HashMap<String, Object> params) {

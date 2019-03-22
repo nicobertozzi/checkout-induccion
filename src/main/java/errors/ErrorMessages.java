@@ -9,7 +9,6 @@ public class ErrorMessages {
     public static final String INVALID_PREFERENCE_CREATION = "Invalid Preference Creation";
     public static final String INVALID_PAYMENT_PROCESSING = "Invalid Payment Processing";
 
-
     private ErrorMessages() {}
 
 }

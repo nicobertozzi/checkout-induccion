@@ -40,19 +40,19 @@ public class EndpointController {
             return new ErrorResponse(HttpStatus.SC_BAD_REQUEST, ErrorMessages.BAD_REQUEST, ErrorMessages.INVALID_PREFERENCE_CREATION, requestHandler.getInvalidCause());
         }
 
-        Preference p = preferencesService.save(requestHandler.getPreferenceDTO());
-        if(p.getId() == null) {
-            MPApiResponse mpa = p.getLastApiResponse();
+        Preference locPreference = preferencesService.save(requestHandler.getPreferenceDTO());
+        if(locPreference.getId() == null) {
+            MPApiResponse mpa = locPreference.getLastApiResponse();
             response.status(mpa.getStatusCode());
 
             return mpa.getJsonElementResponse();
         }
         response.status(HttpStatus.SC_OK);
 
-        Map<String, Object> respMap = new HashMap<>();
-        respMap.put("init_point", p.getInitPoint());
+        Map<String, Object> responseMap = new HashMap<>();
+        responseMap.put("init_point", locPreference.getInitPoint());
 
-        return respMap;
+        return responseMap;
     }
 
     public Object processPayment(Request request, Response response) throws MPException {
@@ -64,19 +64,19 @@ public class EndpointController {
             return new ErrorResponse(HttpStatus.SC_BAD_REQUEST, ErrorMessages.BAD_REQUEST, ErrorMessages.INVALID_PAYMENT_PROCESSING, requestHandler.getInvalidCause());
         }
 
-        Payment p = paymentsService.save(requestHandler.getPaymentDTO());
-        if(p.getId() == null) {
-            MPApiResponse mpa = p.getLastApiResponse();
+        Payment locPayment = paymentsService.save(requestHandler.getPaymentDTO());
+        if(locPayment.getId() == null) {
+            MPApiResponse mpa = locPayment.getLastApiResponse();
             response.status(mpa.getStatusCode());
 
             return mpa.getJsonElementResponse();
         }
         response.status(HttpStatus.SC_OK);
 
-        Map<String, Object> respMap = new HashMap<>();
-        respMap.put("payment_status", p.getStatus());
+        Map<String, Object> responseMap = new HashMap<>();
+        responseMap.put("payment_status", locPayment.getStatus());
 
-        return respMap;
+        return responseMap;
     }
 
     public Object finishPaymentProcess(Request request, Response response) {
@@ -93,11 +93,11 @@ public class EndpointController {
             e.printStackTrace();
         }
 
-        Map<String, Object> respMap = new HashMap<>();
-        respMap.put("payment_status", request.queryParams("payment_status"));
-        respMap.put("payment_status_detail", request.queryParams("payment_status_detail"));
+        Map<String, Object> responseMap = new HashMap<>();
+        responseMap.put("payment_status", request.queryParams("payment_status"));
+        responseMap.put("payment_status_detail", request.queryParams("payment_status_detail"));
 
-        return respMap;
+        return responseMap;
     }
 
 }

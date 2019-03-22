@@ -27,6 +27,7 @@ public class PaymentsService {
         } else {
             payment.setTransactionAmount(paymentDTO.getAmount());
         }
+        // mismo caso que arriba...
         com.mercadopago.resources.datastructures.payment.Payer payer = new com.mercadopago.resources.datastructures.payment.Payer();
         if(paymentDTO.getEmail() == null) {
             payer.setEmail(PreferenceModel.preference.getPayer().getEmail());

@@ -18,9 +18,11 @@ public class Credentials {
     private static final String ACCESS_TOKEN_PROD = "APP_USR-545545474996086-010315-d45aa2d8f8bb1ad9a75cec582842e235__LA_LB__-239656545";
     public static final String PUBLIC_KEY_PROD = "APP_USR-e27b6c01-4af2-4850-baa9-c11d8587d365";
 
-    /*public enum Environment {
+    /*
+    public enum Environment {
         SANDBOX, PRODUCCION
-    }*/
+    }
+    */
 
     public static void configureCredentials() throws MPException {
         System.out.println(" >> Configuring user's credentials...");
@@ -31,7 +33,8 @@ public class Credentials {
         System.out.println(" >> User's credentials configured!");
     }
 
-    /*public static void configureModeAccessToken(Environment pModo) throws MPException {
+    /*
+    public static void configureModeAccessToken(Environment pModo) throws MPException {
         System.out.println(" >> Configuring '" + pModo.name() + "' access token...");
         switch (pModo) {
             case SANDBOX: {
@@ -44,6 +47,7 @@ public class Credentials {
             }
         }
         System.out.println(" >> Access token configured!");
-    }*/
+    }
+    */
 
 }

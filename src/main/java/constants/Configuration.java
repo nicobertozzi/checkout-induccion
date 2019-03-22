@@ -11,9 +11,6 @@ import utils.JsonUtils;
 
 import java.util.ArrayList;
 
-/*
-Clase para la configuracion
- */
 public class Configuration {
 
     public static void configureSpark() {

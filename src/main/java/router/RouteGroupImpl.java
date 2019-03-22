@@ -16,13 +16,12 @@ public class RouteGroupImpl implements RouteGroup {
         /*
         Render's screens definition
          */
-        Spark.get("/", RenderScreenController::renderInicio, new ThymeleafTemplateEngine());
-        Spark.get("/punto1", RenderScreenController::renderPunto1, new ThymeleafTemplateEngine());
-        Spark.get("/punto2", RenderScreenController::renderPunto2, new ThymeleafTemplateEngine());
-        Spark.get("/punto3", RenderScreenController::renderPunto3, new ThymeleafTemplateEngine());
-        Spark.get("/punto4", RenderScreenController::renderPunto4, new ThymeleafTemplateEngine());
-        Spark.get("/punto5", RenderScreenController::renderPunto5, new ThymeleafTemplateEngine());
-        //Spark.get("/payment-status", RenderScreenController::renderPaymentStatus, new ThymeleafTemplateEngine());
+        Spark.get("/", RenderScreenController::renderIndex, new ThymeleafTemplateEngine());
+        Spark.get("/page1", RenderScreenController::renderPage1, new ThymeleafTemplateEngine());
+        Spark.get("/page2", RenderScreenController::renderPage2, new ThymeleafTemplateEngine());
+        Spark.get("/page3", RenderScreenController::renderPage3, new ThymeleafTemplateEngine());
+        Spark.get("/page4", RenderScreenController::renderPage4, new ThymeleafTemplateEngine());
+        Spark.get("/page5", RenderScreenController::renderPage5, new ThymeleafTemplateEngine());
 
         /*
         Endpoints definition

@@ -84,11 +84,11 @@
                 <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-content">
-                <a href="punto1"> 1. Creación de la Preference </a>
-                <a href="punto2"> 2. Implementación SDK MercadoPago </a>
-                <a href="punto3"> 3. Flujo de Pago (v1) </a>
-                <a href="punto4"> 4. Web Tokenize (v2) </a>
-                <a href="punto5"> 5. Web Payment (v2) </a>
+                <a href="page1"> 1. Creación de la Preference </a>
+                <a href="page2"> 2. Implementación SDK MercadoPago </a>
+                <a href="page3"> 3. Flujo de Pago (v1) </a>
+                <a href="page4"> 4. Web Tokenize (v2) </a>
+                <a href="page5"> 5. Web Payment (v2) </a>
             </div>
         </div>
     </div>
@@ -117,26 +117,26 @@
                     <label><b><u>Productos</u></b></label>
                     <br/>
                     <div align="center">
-                        <table key="ktable">
-                            <thead key="kthead">
-                            <tr>
-                                <th key="khtitle">Titulo</th>
-                                <th key="khunitprice">Precio unitario</th>
-                                <th key="khquantity">Cantidad</th>
-                            </tr>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Titulo</th>
+                                    <th>Precio unitario</th>
+                                    <th>Cantidad</th>
+                                </tr>
                             </thead>
-                            <tbody key="ktbody">
-                            <tr key={i}>
-                                <td key="kbtitle">[[${itemTitle}]]</td>
-                                <td key="kbunitprice" align="right">[[${itemUnitPrice}]]</td>
-                                <td key="kbquantity" align="center">[[${itemQuantity}]]</td>
-                            </tr>
+                            <tbody>
+                                <tr th:each="item: ${items}">
+                                    <td>[[${item.title}]]</td>
+                                    <td align="right">[[${item.unitPrice}]]</td>
+                                    <td align="center">[[${item.quantity}]]</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
                 <div th:unless="${preferenceCreated}" align="center">
-                    <p>No existe una Preference. Genere una desde <a href="/punto1">aquí</a>.</p>
+                    <p>No existe una Preference. Genere una desde <a href="/page1">aquí</a>.</p>
                 </div>
             </div>
         </fieldset>
