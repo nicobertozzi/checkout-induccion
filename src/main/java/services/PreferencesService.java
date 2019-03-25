@@ -18,7 +18,7 @@ public class PreferencesService {
      * @return preference
      * @throws MPException If the MercadoPago API call fails
      */
-    public static Preference save(PreferenceDTO preferenceDTO) throws MPException {
+    public Preference save(PreferenceDTO preferenceDTO) throws MPException {
         Preference preference = new Preference();
 
         preference.setPayer(new Payer()

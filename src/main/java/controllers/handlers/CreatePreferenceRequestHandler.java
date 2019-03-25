@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class CreatePreferenceRequestHandler implements  RequestHandler {
+public class CreatePreferenceRequestHandler implements RequestHandler {
 
     private PreferenceDTO preferenceDTO;
 

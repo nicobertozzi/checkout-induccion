@@ -14,7 +14,7 @@ public class PaymentsService {
      * @return payment
      * @throws MPException If the MercadoPago API call fails
      */
-    public static Payment save(PaymentDTO paymentDTO) throws MPException {
+    public Payment save(PaymentDTO paymentDTO) throws MPException {
         Payment payment = new Payment();
 
         payment.setToken(paymentDTO.getToken())

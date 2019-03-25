@@ -1,4 +1,4 @@
-package controllers;
+package controllers.handlers;
 
 import com.google.common.net.MediaType;
 import com.mercadopago.exceptions.MPException;
@@ -18,7 +18,6 @@ public class ExceptionHandler {
 
     private static void buildResponse(Response response, ErrorResponse errorResponse) {
         response.header("Content-Type", MediaType.JSON_UTF_8.toString());
-        //response.body(Json.INSTANCE.toJsonString(errorResponse));
         response.body(JsonUtils.toJson(errorResponse));
         response.status(errorResponse.getHttpStatusCode());
     }

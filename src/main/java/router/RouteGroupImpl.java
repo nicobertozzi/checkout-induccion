@@ -1,6 +1,7 @@
 package router;
 
-import controllers.EndpointController;
+import controllers.PaymentController;
+import controllers.PreferenceController;
 import controllers.RenderScreenController;
 import controllers.handlers.RequestHandlerFactory;
 import services.providers.ServicesProvider;
@@ -27,14 +28,16 @@ public class RouteGroupImpl implements RouteGroup {
         Endpoints definition
          */
         RequestHandlerFactory requestHandlerFactory = new RequestHandlerFactory();
-        EndpointController endpointController = new EndpointController(ServicesProvider.getPreferencesService(), ServicesProvider.getPaymentsService(), requestHandlerFactory);
+
+        PreferenceController preferenceController = new PreferenceController(ServicesProvider.getPreferencesService(), requestHandlerFactory);
+        PaymentController paymentController = new PaymentController(ServicesProvider.getPaymentsService(), requestHandlerFactory);
 
         // Para el Punto 1 [Crear la preference]
-        Spark.post("/create-preference", endpointController::createPreference, new JsonTransformer());
+        Spark.post("/create-preference", preferenceController::createPreference, new JsonTransformer());
         // Para el Punto 3 [Flujo de Pago (v1)] y Punto 4 [Web Tokenize (v2)]
-        Spark.post("/process-payment", endpointController::processPayment, new JsonTransformer());
+        Spark.post("/process-payment", paymentController::processPayment, new JsonTransformer());
         // Para el Punto 5 [Web Payment (v2)]
-        Spark.get("/finish-payment-process", endpointController::finishPaymentProcess, new JsonTransformer());
+        Spark.get("/finish-payment-process", paymentController::finishPaymentProcess, new JsonTransformer());
     }
 
 }

@@ -3,7 +3,7 @@ package router;
 import com.mercadopago.exceptions.MPException;
 import constants.Configuration;
 import constants.Credentials;
-import controllers.ExceptionHandler;
+import controllers.handlers.ExceptionHandler;
 import spark.Spark;
 import spark.servlet.SparkApplication;
 

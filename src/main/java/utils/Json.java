@@ -66,6 +66,7 @@ public enum Json {
         Map<String, Object> map = new LinkedHashMap<>();
 
         String strDecoded = URLDecoder.decode(strEncoded, StandardCharsets.UTF_8.name());
+        System.out.println(strDecoded);
         for(String keyValue : strDecoded.trim().split("&")) {
             String[] tokens = keyValue.trim().split("=");
             String key = tokens[0];
@@ -75,6 +76,7 @@ public enum Json {
             Map<String, Object> pointer = map;
             for(int i = 0; i < keys.length - 1; i++) {
                 String currentKey = keys[i];
+
                 Map<String, Object> nested = (Map<String, Object>) pointer.get(keys[i]);
 
                 if(nested == null) {
