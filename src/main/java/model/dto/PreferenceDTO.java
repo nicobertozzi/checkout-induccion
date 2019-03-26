@@ -8,7 +8,6 @@ import java.util.List;
 public class PreferenceDTO {
 
     @Valid
-    @NotNull(message = "is null")
     private PayerDTO payer;
 
     @Valid

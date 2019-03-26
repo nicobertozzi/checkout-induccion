@@ -7,15 +7,14 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.validator.routines.EmailValidator;
 import spark.Request;
 import utils.RequestUtil;
-
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
+import java.util.Optional;
 
 public class CreatePreferenceRequestHandler implements RequestHandler {
 
@@ -26,7 +25,6 @@ public class CreatePreferenceRequestHandler implements RequestHandler {
     }
 
     private List<ErrorCause> invalidCauses;
-    private HashMap<String, Object> validValues;
 
     private final String INVALID_PREFERENCE_CODE = "100";
 
@@ -46,20 +44,8 @@ public class CreatePreferenceRequestHandler implements RequestHandler {
 
         preferenceDTO = RequestUtil.getBodyAsObject(request, PreferenceDTO.class);
 
-        automaticValidation();
-        //manualValidation();
-    }
-
-    /**
-     * Automatic validations through annotations in the DTOs
-     */
-    private void automaticValidation() {
-        ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-        Validator validator = factory.getValidator();
-
-        for(ConstraintViolation violation : validator.validate(preferenceDTO)) {
-            this.invalidCauses.add(new ErrorCause(INVALID_PREFERENCE_CODE, "Invalid preference configuration: " + violation.getPropertyPath() + " " + violation.getMessage()));
-        }
+        manualValidation();
+        //automaticValidation();
     }
 
     /**
@@ -67,43 +53,34 @@ public class CreatePreferenceRequestHandler implements RequestHandler {
      */
     private void manualValidation() {
         if(preferenceDTO.getPayer() != null) {
-            if(StringUtils.isBlank(preferenceDTO.getPayer().getName())) {
-                this.invalidCauses.add(new ErrorCause(INVALID_NAME_PAYER_CODE, "Invalid preference configuration. Payer's name is null or empty"));
-            } else {
-                if(!StringUtils.isAlphaSpace(preferenceDTO.getPayer().getName())) {
-                    this.invalidCauses.add(new ErrorCause(INVALID_NAME_PAYER_CODE, "Invalid preference configuration. Payer's name does not contain only Unicode letters"));
-                }
+            if(preferenceDTO.getPayer().getName() != null
+                && !StringUtils.isAlphaSpace(preferenceDTO.getPayer().getName())) {
+                this.invalidCauses.add(new ErrorCause(INVALID_NAME_PAYER_CODE, "Invalid preference configuration. Payer's name does not contain only Unicode letters"));
             }
-            if(StringUtils.isBlank(preferenceDTO.getPayer().getSurname())) {
-                this.invalidCauses.add(new ErrorCause(INVALID_SURNAME_PAYER_CODE, "Invalid preference configuration. Payer's surname is null or empty"));
-            } else {
-                if(!StringUtils.isAlphaSpace(preferenceDTO.getPayer().getSurname())) {
-                    this.invalidCauses.add(new ErrorCause(INVALID_SURNAME_PAYER_CODE, "Invalid preference configuration. Payer's surname does not contain only letters"));
-                }
+
+            if(preferenceDTO.getPayer().getSurname() != null
+                && !StringUtils.isAlphaSpace(preferenceDTO.getPayer().getSurname())) {
+                this.invalidCauses.add(new ErrorCause(INVALID_SURNAME_PAYER_CODE, "Invalid preference configuration. Payer's surname does not contain only letters"));
             }
-            if(StringUtils.isBlank(preferenceDTO.getPayer().getEmail())) {
-                this.invalidCauses.add(new ErrorCause(INVALID_EMAIL_PAYER_CODE, "Invalid preference configuration. Payer's email is null or empty"));
-            } else {
-                if(!EmailValidator.getInstance().isValid(preferenceDTO.getPayer().getEmail())) {
-                    this.invalidCauses.add(new ErrorCause(INVALID_EMAIL_PAYER_CODE, "Invalid preference configuration. Payer's email is not a valid email"));
-                }
+            /*
+            Optional<ErrorCause> opSurname = isRequired(preferenceDTO.getPayer().getSurname(), INVALID_SURNAME_PAYER_CODE, "Payer's surname");
+            if(opSurname.isPresent()) {
+                this.invalidCauses.add(opSurname.get());
             }
-            if(StringUtils.isBlank(preferenceDTO.getPayer().getDocumentType())) {
-                this.invalidCauses.add(new ErrorCause(INVALID_DOCUMENT_PAYER_CODE, "Invalid preference configuration. Document type is null or empty"));
-            } else {
-                if(!StringUtils.isAlphaSpace(preferenceDTO.getPayer().getDocumentType())) {
-                    this.invalidCauses.add(new ErrorCause(INVALID_DOCUMENT_PAYER_CODE, "Invalid preference configuration. Document type does not contain only letters"));
-                }
+            */
+
+            if(preferenceDTO.getPayer().getEmail() != null
+                && !EmailValidator.getInstance().isValid(preferenceDTO.getPayer().getEmail())) {
+                this.invalidCauses.add(new ErrorCause(INVALID_EMAIL_PAYER_CODE, "Invalid preference configuration. Payer's email is not a valid email"));
             }
-            if(StringUtils.isBlank(preferenceDTO.getPayer().getDocumentNumber())) {
-                this.invalidCauses.add(new ErrorCause(INVALID_DOCUMENT_PAYER_CODE, "Invalid preference configuration. Document number is null or empty"));
-            } else {
-                if(!StringUtils.isNumeric(preferenceDTO.getPayer().getDocumentNumber())) {
-                    this.invalidCauses.add(new ErrorCause(INVALID_DOCUMENT_PAYER_CODE, "Invalid preference configuration. Document number does not contain only numbers"));
-                }
+            if(preferenceDTO.getPayer().getDocumentType() != null
+                && !StringUtils.isAlphaSpace(preferenceDTO.getPayer().getDocumentType())) {
+                this.invalidCauses.add(new ErrorCause(INVALID_DOCUMENT_PAYER_CODE, "Invalid preference configuration. Document type does not contain only letters"));
             }
-        } else {
-            this.invalidCauses.add(new ErrorCause(INVALID_PAYER_CODE, "Invalid preference configuration. Payer is null"));
+            if(preferenceDTO.getPayer().getDocumentNumber() != null
+                && !StringUtils.isNumeric(preferenceDTO.getPayer().getDocumentNumber())) {
+                this.invalidCauses.add(new ErrorCause(INVALID_DOCUMENT_PAYER_CODE, "Invalid preference configuration. Document number does not contain only numbers"));
+            }
         }
         if(preferenceDTO.getItems() != null && !preferenceDTO.getItems().isEmpty()) {
             boolean someInvalid = false;
@@ -134,13 +111,29 @@ public class CreatePreferenceRequestHandler implements RequestHandler {
         }
     }
 
+    /**
+     * Automatic validations through annotations in the DTOs
+     */
+    private void automaticValidation() {
+        ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+        Validator validator = factory.getValidator();
+
+        for(ConstraintViolation violation : validator.validate(preferenceDTO)) {
+            this.invalidCauses.add(new ErrorCause(INVALID_PREFERENCE_CODE, "Invalid preference configuration: " + violation.getPropertyPath() + " " + violation.getMessage()));
+        }
+    }
+
+    public Optional<ErrorCause> isRequired(String str, String code, String atr) {
+        if(StringUtils.isBlank(str) || !StringUtils.isAlphaSpace(str)) {
+            return Optional.of(new ErrorCause(code, atr + " cannot be null or empty"));
+        }
+
+        return Optional.empty();
+    }
+
     @Override
     public boolean isValid() {
         return this.invalidCauses.isEmpty();
-    }
-
-    public <T> T getValidParam(String parameter) {
-        return (T) this.validValues.get(parameter);
     }
 
     @Override

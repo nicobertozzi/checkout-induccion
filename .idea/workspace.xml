@@ -3,17 +3,24 @@
   <component name="ChangeListManager">
     <list default="true" id="6b7ab209-a0f7-43ba-9c97-fd3f5615bb3b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/EndpointController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/PreferenceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/ExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/handlers/ExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/PaymentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/PaymentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/PreferenceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/PreferenceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/RenderScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/RenderScreenController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/handlers/CreatePreferenceRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/handlers/CreatePreferenceRequestHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/handlers/ProcessPaymentRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/handlers/ProcessPaymentRequestHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/router/RestEndpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/router/RestEndpoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/handlers/ProcessPaymentRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/handlers/ProcessPaymentV1RequestHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/handlers/RequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/handlers/RequestHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/handlers/RequestHandlerFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/handlers/RequestHandlerFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/dto/PayerDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/dto/PayerDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/dto/PaymentDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/dto/PaymentDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/dto/PreferenceDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/dto/PreferenceDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/router/RouteGroupImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/router/RouteGroupImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/services/PaymentsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/PaymentsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/services/PreferencesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/PreferencesService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/utils/Json.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/Json.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/page2.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/page2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/controllers/EndpointControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/controllers/PreferenceControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/page1.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/page1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/page3.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/page3.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/page4.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/page4.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/controllers/PaymentControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/controllers/PaymentControllerTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -86,45 +93,13 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/java/controllers/PreferenceControllerTest.java">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/page3.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
-              <caret line="57" column="8" selection-start-line="57" selection-start-column="8" selection-end-line="57" selection-end-column="8" />
+            <state relative-caret-position="175">
+              <caret line="125" column="47" selection-start-line="125" selection-start-column="41" selection-end-line="125" selection-end-column="47" />
               <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/controllers/PaymentControllerTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="485">
-              <caret line="55" selection-start-line="55" selection-end-line="55" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/controllers/PaymentController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="383">
-              <caret line="47" column="21" selection-start-line="47" selection-start-column="11" selection-end-line="47" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/controllers/PreferenceController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="393">
-              <caret line="46" selection-start-line="46" selection-end-line="46" />
-              <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#li#2;n#ul#0;n#form#0;n#div#1;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#1;n#li#2;n#ul#0;n#form#0;n#div#1;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -154,11 +129,12 @@
       <find>invalid preference creation</find>
       <find>INVALID_PREFERENCE_CREATE</find>
       <find>paymentMethod</find>
-      <find>issuer</find>
       <find>issuerImg</find>
       <find>$issuerImg</find>
       <find>issuerId</find>
       <find>Float</find>
+      <find>preferenceId</find>
+      <find>issuer</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -167,18 +143,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/validators/Validator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/utils/MapParams.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controllers/handlers/RequestHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/services/PreferenceService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/services/providers/ServicesProviders.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/PreferenceDTO.java" />
         <option value="$PROJECT_DIR$/src/main/java/utils/JsonUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/services/providers/ServicesProvider.java" />
-        <option value="$PROJECT_DIR$/src/main/java/model/dto/PreferenceDTO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/model/dto/PayerDTO.java" />
         <option value="$PROJECT_DIR$/src/main/java/errors/ErrorResponse.java" />
-        <option value="$PROJECT_DIR$/src/main/java/model/dto/PaymentDTO.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/dto/ItemDTO.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/punto3.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/punto1.html" />
@@ -191,39 +159,45 @@
         <option value="$PROJECT_DIR$/src/main/java/constants/Configuration.java" />
         <option value="$PROJECT_DIR$/src/main/java/utils/JsonTransformer.java" />
         <option value="$PROJECT_DIR$/src/main/java/errors/ErrorMessages.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/page4.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/page5.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/index.html" />
         <option value="$PROJECT_DIR$/src/main/java/utils/RequestUtil.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controllers/handlers/RequestHandlerFactory.java" />
         <option value="$PROJECT_DIR$/src/main/java/utils/APIHelper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controllers/RenderScreenController.java" />
         <option value="$PROJECT_DIR$/build.gradle" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/page3.html" />
         <option value="$PROJECT_DIR$/src/main/java/controllers/ExceptionHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/page1.html" />
         <option value="$PROJECT_DIR$/src/main/java/constants/Credentials.java" />
-        <option value="$PROJECT_DIR$/src/main/java/utils/Json.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/page2.html" />
-        <option value="$PROJECT_DIR$/src/main/java/controllers/handlers/ProcessPaymentRequestHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/controllers/EndpointController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/router/RouteGroupImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/router/RestEndpoint.java" />
         <option value="$PROJECT_DIR$/src/main/java/controllers/handlers/ExceptionHandler.java" />
         <option value="$PROJECT_DIR$/src/test/java/controllers/EndpointControllerTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controllers/PaymentController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controllers/handlers/CreatePreferenceRequestHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/services/PreferencesService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/services/PaymentsService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controllers/PreferenceController.java" />
         <option value="$PROJECT_DIR$/src/test/java/controllers/PaymentControllerTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/controllers/PreferenceControllerTest.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/page5.html" />
+        <option value="$PROJECT_DIR$/src/main/java/Main.java" />
+        <option value="$PROJECT_DIR$/src/test/java/Utils/JsonTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/utils/Json.java" />
+        <option value="$PROJECT_DIR$/src/main/java/model/dto/PreferenceDTO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/model/dto/PayerDTO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controllers/RenderScreenController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/index.html" />
+        <option value="$PROJECT_DIR$/src/main/java/model/dto/PaymentDTO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controllers/handlers/ProcessPaymentRequestHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controllers/PreferenceController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controllers/handlers/RequestHandlerFactory.java" />
+        <option value="$PROJECT_DIR$/src/main/java/router/RouteGroupImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/page4.html" />
+        <option value="$PROJECT_DIR$/src/main/java/controllers/handlers/RequestHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controllers/handlers/ProcessPaymentV1RequestHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controllers/handlers/CreatePreferenceRequestHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/page1.html" />
+        <option value="$PROJECT_DIR$/src/main/java/controllers/PaymentController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/services/PaymentsService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controllers/handlers/ProcessPaymentV2RequestHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/page3.html" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
-    <option name="x" value="-225" />
-    <option name="y" value="-1080" />
+  <component name="ProjectFrameBounds" fullScreen="true">
     <option name="width" value="1920" />
     <option name="height" value="1080" />
   </component>
@@ -378,6 +352,14 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="controllers" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="checkout.induccion" type="b2602c69:ProjectViewProjectNode" />
+              <item name="checkout.induccion" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Utils" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -387,7 +369,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553529627650" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553614207614" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
@@ -396,9 +378,9 @@
       <recent name="$PROJECT_DIR$/src/main/resources" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="controllers.handlers" />
       <recent name="controllers" />
       <recent name="services" />
-      <recent name="controllers.handlers" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources/templates" />
@@ -420,7 +402,30 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.PaymentControllerTest.whenInvalidProcessPaymentThenRespondBadRequest">
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="InduccionCheckout.checkout.induccion.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="JsonTest.convertToJSON" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="InduccionCheckout.checkout.induccion.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Utils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Utils" />
+      <option name="MAIN_CLASS_NAME" value="Utils.JsonTest" />
+      <option name="METHOD_NAME" value="convertToJSON" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="PaymentControllerTest.whenInvalidProcessPaymentThenRespondBadRequest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="InduccionCheckout.checkout.induccion.test" />
       <extension name="coverage">
@@ -453,22 +458,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PreferenceControllerTest.whenCreatePreferenceThenUseService" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="InduccionCheckout.checkout.induccion.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="controllers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="controllers" />
-      <option name="MAIN_CLASS_NAME" value="controllers.PreferenceControllerTest" />
-      <option name="METHOD_NAME" value="whenCreatePreferenceThenUseService" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="PreferenceControllerTest.whenInvalidCreatePreferenceThenRespondBadRequest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="InduccionCheckout.checkout.induccion.test" />
       <extension name="coverage">
@@ -485,36 +474,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PreferenceControllerTest.whenInvalidCreatePreferenceThenRespondErrorMessage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="InduccionCheckout.checkout.induccion.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="controllers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="controllers" />
-      <option name="MAIN_CLASS_NAME" value="controllers.PreferenceControllerTest" />
-      <option name="METHOD_NAME" value="whenInvalidCreatePreferenceThenRespondErrorMessage" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
-      <item itemvalue="JUnit.PreferenceControllerTest.whenCreatePreferenceThenUseService" />
       <item itemvalue="JUnit.PreferenceControllerTest.whenInvalidCreatePreferenceThenRespondBadRequest" />
-      <item itemvalue="JUnit.PreferenceControllerTest.whenInvalidCreatePreferenceThenRespondErrorMessage" />
       <item itemvalue="JUnit.PaymentControllerTest.whenProcessPaymentThenUseService" />
       <item itemvalue="JUnit.PaymentControllerTest.whenInvalidProcessPaymentThenRespondBadRequest" />
+      <item itemvalue="Application.Main" />
+      <item itemvalue="JUnit.JsonTest.convertToJSON" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.JsonTest.convertToJSON" />
         <item itemvalue="JUnit.PaymentControllerTest.whenInvalidProcessPaymentThenRespondBadRequest" />
         <item itemvalue="JUnit.PaymentControllerTest.whenProcessPaymentThenUseService" />
         <item itemvalue="JUnit.PreferenceControllerTest.whenInvalidCreatePreferenceThenRespondBadRequest" />
-        <item itemvalue="JUnit.PreferenceControllerTest.whenInvalidCreatePreferenceThenRespondErrorMessage" />
-        <item itemvalue="JUnit.PreferenceControllerTest.whenCreatePreferenceThenUseService" />
       </list>
     </recent_temporary>
   </component>
@@ -547,42 +520,42 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="PreferenceControllerTest_whenCreatePreferenceThenUseService - 2019.03.25 at 12h 29m 37s.xml">
-      <configuration name="PreferenceControllerTest.whenCreatePreferenceThenUseService" configurationId="JUnit" />
+    <history-entry file="JsonTest_convertToJSON - 2019.03.25 at 15h 15m 05s.xml">
+      <configuration name="JsonTest.convertToJSON" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PreferenceControllerTest_whenCreatePreferenceThenUseService - 2019.03.25 at 12h 31m 05s.xml">
-      <configuration name="PreferenceControllerTest.whenCreatePreferenceThenUseService" configurationId="JUnit" />
+    <history-entry file="JsonTest_convertToJSON - 2019.03.25 at 16h 15m 37s.xml">
+      <configuration name="JsonTest.convertToJSON" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PreferenceControllerTest_whenCreatePreferenceThenUseService - 2019.03.25 at 12h 32m 33s.xml">
-      <configuration name="PreferenceControllerTest.whenCreatePreferenceThenUseService" configurationId="JUnit" />
+    <history-entry file="JsonTest_convertToJSON - 2019.03.25 at 16h 23m 08s.xml">
+      <configuration name="JsonTest.convertToJSON" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PreferenceControllerTest_whenCreatePreferenceThenUseService - 2019.03.25 at 12h 33m 09s.xml">
-      <configuration name="PreferenceControllerTest.whenCreatePreferenceThenUseService" configurationId="JUnit" />
+    <history-entry file="JsonTest_convertToJSON - 2019.03.25 at 16h 23m 47s.xml">
+      <configuration name="JsonTest.convertToJSON" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PreferenceControllerTest_whenInvalidCreatePreferenceThenRespondBadRequest - 2019.03.25 at 12h 36m 34s.xml">
-      <configuration name="PreferenceControllerTest.whenInvalidCreatePreferenceThenRespondBadRequest" configurationId="JUnit" />
+    <history-entry file="JsonTest_convertToJSON - 2019.03.25 at 16h 24m 56s.xml">
+      <configuration name="JsonTest.convertToJSON" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PreferenceControllerTest_whenCreatePreferenceThenUseService - 2019.03.25 at 12h 42m 22s.xml">
-      <configuration name="PreferenceControllerTest.whenCreatePreferenceThenUseService" configurationId="JUnit" />
+    <history-entry file="JsonTest_convertToJSON - 2019.03.25 at 16h 25m 41s.xml">
+      <configuration name="JsonTest.convertToJSON" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PreferenceControllerTest_whenInvalidCreatePreferenceThenRespondErrorMessage - 2019.03.25 at 12h 42m 56s.xml">
-      <configuration name="PreferenceControllerTest.whenInvalidCreatePreferenceThenRespondErrorMessage" configurationId="JUnit" />
+    <history-entry file="JsonTest_convertToJSON - 2019.03.25 at 16h 28m 21s.xml">
+      <configuration name="JsonTest.convertToJSON" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PreferenceControllerTest_whenInvalidCreatePreferenceThenRespondBadRequest - 2019.03.25 at 12h 43m 27s.xml">
-      <configuration name="PreferenceControllerTest.whenInvalidCreatePreferenceThenRespondBadRequest" configurationId="JUnit" />
+    <history-entry file="JsonTest_convertToJSON - 2019.03.25 at 16h 37m 16s.xml">
+      <configuration name="JsonTest.convertToJSON" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PaymentControllerTest_whenProcessPaymentThenUseService - 2019.03.25 at 12h 57m 15s.xml">
-      <configuration name="PaymentControllerTest.whenProcessPaymentThenUseService" configurationId="JUnit" />
+    <history-entry file="JsonTest_convertToJSON - 2019.03.25 at 16h 40m 33s.xml">
+      <configuration name="JsonTest.convertToJSON" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PaymentControllerTest_whenProcessPaymentThenUseService - 2019.03.25 at 12h 57m 41s.xml">
-      <configuration name="PaymentControllerTest.whenProcessPaymentThenUseService" configurationId="JUnit" />
+    <history-entry file="JsonTest_convertToJSON - 2019.03.25 at 16h 41m 22s.xml">
+      <configuration name="JsonTest.convertToJSON" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-225" y="-1080" width="1920" height="1080" extended-state="6" />
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49931034" visible="true" weight="0.16187434" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49931034" visible="true" weight="0.21745351" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -592,8 +565,8 @@
       <window_info anchor="bottom" id="Messages" order="0" weight="0.32673267" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.32871288" />
-      <window_info anchor="bottom" id="Run" order="3" weight="0.23493975" />
-      <window_info active="true" anchor="bottom" id="Debug" order="4" sideWeight="0.49946752" visible="true" weight="0.28217822" />
+      <window_info anchor="bottom" id="Run" order="3" weight="0.23465346" />
+      <window_info active="true" anchor="bottom" id="Debug" order="4" sideWeight="0.49946752" visible="true" weight="0.3433735" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="7" />
@@ -616,30 +589,6 @@
     <MESSAGE value="Separacion de las credenciales y la configuracion de Spark" />
     <MESSAGE value="Separacion del Controller" />
     <option name="LAST_COMMIT_MESSAGE" value="Separacion del Controller" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/controllers/handlers/CreatePreferenceRequestHandler.java</url>
-          <line>46</line>
-          <properties />
-          <option name="timeStamp" value="182" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/services/PreferencesService.java</url>
-          <line>23</line>
-          <properties />
-          <option name="timeStamp" value="189" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/controllers/handlers/CreatePreferenceRequestHandler.java</url>
-          <line>138</line>
-          <properties />
-          <option name="timeStamp" value="198" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
@@ -692,27 +641,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/javax.validation/validation-api/2.0.1.Final/4b714a5167580122e46ead3317ffcdcdbd67c5f0/validation-api-2.0.1.Final-sources.jar!/javax/validation/Validator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="37" column="36" selection-start-line="37" selection-start-column="36" selection-end-line="37" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpcore/4.4.4/c5c19e3e6af6b452def290cde12a3ee4c35c893c/httpcore-4.4.4-sources.jar!/org/apache/http/HttpStatus.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="92" column="28" selection-start-line="92" selection-start-column="28" selection-end-line="92" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-server/9.4.8.v20171121/fef49ac6b2bbc6d142dc0be34f68f0fb0792d52b/jetty-server-9.4.8.v20171121-sources.jar!/org/eclipse/jetty/server/session/SessionHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="1574" selection-start-line="1574" selection-end-line="1574" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/messages/MessageResponse.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -758,16 +686,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/dto/PreferenceDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="31" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/model/dto/ItemDTO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -775,24 +693,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/page4.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="94" column="30" selection-start-line="94" selection-start-column="30" selection-end-line="94" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.mercadopago/dx-java/1.0.33/af60393777d28aa9f463d3233936a02669bc9fae/dx-java-1.0.33-sources.jar!/com/mercadopago/resources/datastructures/preference/Item.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="21" column="86" selection-start-line="21" selection-start-column="77" selection-end-line="21" selection-end-column="86" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="114" column="68" lean-forward="true" selection-start-line="114" selection-start-column="68" selection-end-line="114" selection-end-column="68" />
         </state>
       </provider>
     </entry>
@@ -810,16 +714,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utils/RequestUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="1" lean-forward="true" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/utils/APIHelper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -829,17 +723,6 @@
             <element signature="e#381#382#0" expanded="true" />
             <element signature="e#634#635#0" expanded="true" />
             <element signature="e#681#682#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/page3.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="11" column="58" lean-forward="true" selection-start-line="11" selection-start-column="58" selection-end-line="11" selection-end-column="58" />
-          <folding>
-            <element signature="n#style#0;n#img#0;n#li#2;n#ul#0;n#form#0;n#div#1;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#li#4;n#ul#0;n#form#0;n#div#1;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -858,53 +741,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/errors/ErrorResponse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/page5.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="445">
-          <caret line="109" column="69" selection-start-line="109" selection-start-column="57" selection-end-line="109" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/dto/PaymentDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="11" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/RenderScreenController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1335">
-          <caret line="89" column="69" selection-start-line="89" selection-start-column="64" selection-end-line="89" selection-end-column="69" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/dto/PayerDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="33" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/constants/Credentials.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="308">
@@ -919,16 +755,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="483">
           <caret line="143" column="82" selection-start-line="143" selection-start-column="82" selection-end-line="143" selection-end-column="82" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/handlers/ProcessPaymentRequestHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="18" column="53" selection-start-line="18" selection-start-column="53" selection-end-line="18" selection-end-column="53" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -953,91 +779,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/page1.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="209" column="88" lean-forward="true" selection-start-line="209" selection-start-column="88" selection-end-line="209" selection-end-column="88" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/services/providers/ServicesProvider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="17" column="36" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="30" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utils/Json.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-604">
-          <caret line="15" column="12" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/controllers/handlers/ExceptionHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
           <caret line="19" column="73" selection-start-line="19" selection-start-column="73" selection-end-line="19" selection-end-column="73" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/handlers/RequestHandlerFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="40" selection-start-line="22" selection-start-column="40" selection-end-line="22" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/router/RestEndpoint.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="33" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/router/RouteGroupImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="31" column="69" selection-start-line="31" selection-start-column="69" selection-end-line="31" selection-end-column="69" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/handlers/RequestHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="12" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/services/PaymentsService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="16" column="10" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="10" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1064,32 +809,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/handlers/CreatePreferenceRequestHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="49" column="29" lean-forward="true" selection-start-line="49" selection-start-column="29" selection-end-line="49" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#7019#7020#0" expanded="true" />
-            <element signature="e#7070#7071#0" expanded="true" />
-            <element signature="e#7122#7123#0" expanded="true" />
-            <element signature="e#7180#7181#0" expanded="true" />
-            <element signature="e#7243#7244#0" expanded="true" />
-            <element signature="e#7279#7280#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/services/PreferencesService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="20" column="10" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.mercadopago/dx-java/1.0.33/af60393777d28aa9f463d3233936a02669bc9fae/dx-java-1.0.33-sources.jar!/com/mercadopago/core/MPApiResponse.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="233">
@@ -1098,23 +817,6 @@
             <element signature="e#1908#1909#0" expanded="true" />
             <element signature="e#1955#1956#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/PreferenceController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="393">
-          <caret line="46" selection-start-line="46" selection-end-line="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/PaymentController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
-          <caret line="47" column="21" selection-start-line="47" selection-start-column="11" selection-end-line="47" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -1129,22 +831,274 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/controllers/PaymentControllerTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/page5.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="485">
-          <caret line="55" selection-start-line="55" selection-end-line="55" />
+        <state relative-caret-position="220">
+          <caret line="94" column="55" selection-start-line="94" selection-start-column="55" selection-end-line="94" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utils/RequestUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="35" lean-forward="true" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="5" lean-forward="true" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/controllers/PreferenceControllerTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="57" column="8" selection-start-line="57" selection-start-column="8" selection-end-line="57" selection-end-column="8" />
+        <state relative-caret-position="347">
+          <caret line="40" column="9" lean-forward="true" selection-start-line="40" selection-start-column="9" selection-end-line="40" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/controllers/PaymentControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="371">
+          <caret line="38" column="9" lean-forward="true" selection-start-line="38" selection-start-column="9" selection-end-line="38" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/Utils/JsonTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="27" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utils/Json.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="434">
+          <caret line="42" column="26" selection-start-line="42" selection-start-column="26" selection-end-line="42" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/commons-validator/commons-validator/1.4.0/de47dafdf8eeb73b10198706c797b45b7fe0b51e/commons-validator-1.4.0-sources.jar!/org/apache/commons/validator/routines/EmailValidator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="16" column="18" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/services/providers/ServicesProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/services/PreferencesService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="101">
+          <caret line="20" column="22" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="97">
+          <caret line="107" column="38" selection-start-line="107" selection-start-column="38" selection-end-line="107" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/RenderScreenController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-635">
+          <caret line="16" column="56" selection-start-line="16" selection-start-column="56" selection-end-line="16" selection-end-column="56" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/dto/PreferenceDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/dto/PayerDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/errors/ErrorResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="16" column="11" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/handlers/RequestHandlerFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="438">
+          <caret line="32" column="61" selection-start-line="32" selection-start-column="61" selection-end-line="32" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/page4.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="106" column="50" lean-forward="true" selection-start-line="106" selection-start-column="50" selection-end-line="106" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/PreferenceController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="36" selection-start-line="36" selection-end-line="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/handlers/RequestHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="33" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/handlers/CreatePreferenceRequestHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="25" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
+          <folding>
+            <element signature="e#6382#6383#0" expanded="true" />
+            <element signature="e#6433#6434#0" expanded="true" />
+            <element signature="e#6496#6497#0" expanded="true" />
+            <element signature="e#6532#6533#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/page1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="171" column="108" selection-start-line="171" selection-start-column="108" selection-end-line="171" selection-end-column="108" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/PaymentController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="793">
+          <caret line="79" selection-start-line="79" selection-end-line="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/handlers/ProcessPaymentV1RequestHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="67" column="8" selection-start-line="67" selection-start-column="8" selection-end-line="71" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/handlers/ProcessPaymentV2RequestHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="167">
+          <caret line="43" column="37" lean-forward="true" selection-start-line="43" selection-start-column="37" selection-end-line="43" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2959#2960#0" expanded="true" />
+            <element signature="e#3058#3059#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/services/PaymentsService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="393">
+          <caret line="42" column="79" selection-start-line="42" selection-start-column="79" selection-end-line="42" selection-end-column="79" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/dto/PaymentDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/router/RouteGroupImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="327">
+          <caret line="36" column="47" lean-forward="true" selection-start-line="36" selection-start-column="47" selection-end-line="36" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/router/RestEndpoint.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="265">
+          <caret line="19" column="36" lean-forward="true" selection-start-line="19" selection-start-column="36" selection-end-line="19" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/page3.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="125" column="47" selection-start-line="125" selection-start-column="41" selection-end-line="125" selection-end-column="47" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#li#2;n#ul#0;n#form#0;n#div#1;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#1;n#li#2;n#ul#0;n#form#0;n#div#1;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

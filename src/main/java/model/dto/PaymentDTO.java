@@ -6,7 +6,6 @@ import javax.validation.constraints.*;
 
 public class PaymentDTO {
 
-    @NotBlank(message = "is null or empty")
     @Pattern(regexp = "(\\p{Alnum}|\\s|'|-)*", message = "is not a valid alphanumeric characters")
     String description;
 
