@@ -105,7 +105,7 @@
             </div>
             <div align="center">
                 <div th:if="${preferenceCreated}">
-                    <form action="/process-payment" method="POST">
+                    <form action="/process-payment-v2" method="POST">
                         <script src="https://www.mercadopago.com.ar/integrations/v1/web-tokenize-checkout.js"
                                 th:data-public-key="${publicKey}" th:data-transaction-amount="${transactionAmount}">
                         </script>

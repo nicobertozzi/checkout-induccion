@@ -5,13 +5,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 public enum Json {
 
@@ -43,9 +41,7 @@ public enum Json {
         }
 
         if(!isJSON(str)) {
-            System.out.println("No es un JSON. Lo convertimos...");
             str = convertToJSON(str);
-            System.out.println(str);
         }
 
         return mapper.readValue(str, tClass);
@@ -77,7 +73,7 @@ public enum Json {
             for(int i = 0; i < keys.length - 1; i++) {
                 String currentKey = keys[i];
 
-                Map<String, Object> nested = (Map<String, Object>) pointer.get(keys[i]);
+                Map<String, Object> nested = (Map<String, Object>) pointer.get(currentKey);
 
                 if(nested == null) {
                     nested = new LinkedHashMap<>();
@@ -89,6 +85,36 @@ public enum Json {
 
             pointer.put(keys[keys.length - 1], value);
         }
+
+        // Para los atributos que son arrays, hacemos la conversion manual...
+        Map<String, Object> mapToAdd = new LinkedHashMap<>();
+        List<String> listToRemove = new ArrayList();
+        for(String key : map.keySet()) {
+            if(key.contains("[")) {
+                String prefix = key.substring(0, key.indexOf("["));
+
+                List lista = (List) mapToAdd.get(prefix);
+                if(lista == null) {
+                    lista = new ArrayList();
+                }
+
+                Map<String, Object> objArray = (Map<String, Object>) map.get(key);
+                lista.add(objArray);
+                mapToAdd.put(prefix, lista);
+
+                listToRemove.add(key);
+            }
+        }
+
+        // Eliminamos las key de los elementos del array
+        for(String keyRemoved : listToRemove) {
+            map.remove(keyRemoved);
+        }
+        // Agregamos las key con sus arrays
+        for(String keyAdded : mapToAdd.keySet()) {
+            map.put(keyAdded, mapToAdd.get(keyAdded));
+        }
+        //
 
         return map;
     }

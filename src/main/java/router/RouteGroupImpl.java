@@ -34,8 +34,10 @@ public class RouteGroupImpl implements RouteGroup {
 
         // Para el Punto 1 [Crear la preference]
         Spark.post("/create-preference", preferenceController::createPreference, new JsonTransformer());
-        // Para el Punto 3 [Flujo de Pago (v1)] y Punto 4 [Web Tokenize (v2)]
-        Spark.post("/process-payment", paymentController::processPayment, new JsonTransformer());
+        // Para el Punto 3 [Flujo de Pago (v1)]
+        Spark.post("/process-payment-v1", paymentController::processPaymentV1, new JsonTransformer());
+        // Para el Punto 4 [Web Tokenize (v2)]
+        Spark.post("/process-payment-v2", paymentController::processPaymentV2, new JsonTransformer());
         // Para el Punto 5 [Web Payment (v2)]
         Spark.get("/finish-payment-process", paymentController::finishPaymentProcess, new JsonTransformer());
     }

@@ -23,8 +23,8 @@ public class PaymentsService {
                 .setPaymentMethodId(paymentDTO.getPaymentMethodId())
                 .setIssuerId(paymentDTO.getIssuerId());
 
-        // Si no llega como parametro (punto 4) deberia buscar la preference??
-        // por ahora lo hago a pata...
+        // Si no llega como parametro (V2) deberia buscar la preference??
+        // por ahora lo calculo con la preference en memoria...
         if(paymentDTO.getAmount() == null) {
             Double transactionAmount = PreferenceModel.preference.getItems().stream()
                     .mapToDouble(i -> (i.getQuantity() * i.getUnitPrice()))
@@ -34,13 +34,17 @@ public class PaymentsService {
         } else {
             payment.setTransactionAmount(paymentDTO.getAmount());
         }
-        // mismo caso que arriba...
+
         com.mercadopago.resources.datastructures.payment.Payer payer = new com.mercadopago.resources.datastructures.payment.Payer();
-        if(paymentDTO.getEmail() == null) {
-            payer.setEmail(PreferenceModel.preference.getPayer().getEmail());
-        } else {
-            payer.setEmail(paymentDTO.getEmail());
+        String email = "test_user_19562067@testuser.com";
+        // priorizo el email del pago, sino el de la preference, y sino uno por default...
+        if(paymentDTO.getEmail() != null && !paymentDTO.getEmail().isEmpty()) {
+            email = paymentDTO.getEmail();
+        } else if(PreferenceModel.preference.getPayer().getEmail() != null && !PreferenceModel.preference.getPayer().getEmail().isEmpty()) {
+            email = PreferenceModel.preference.getPayer().getEmail();
         }
+        payer.setEmail(email);
+
         payment.setPayer(payer);
 
         payment.save();

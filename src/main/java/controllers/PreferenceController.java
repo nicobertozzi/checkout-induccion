@@ -33,7 +33,8 @@ public class PreferenceController {
      * @throws Exception
      */
     public Object createPreference(Request request, Response response) throws Exception {
-        System.out.println("createPreference()");
+        response.header("Content-Type", "application/json");
+
         CreatePreferenceRequestHandler requestHandler = requestHandlerFactory.getCreatePreferenceHandler(request);
 
         if(!requestHandler.isValid()) {
@@ -49,6 +50,7 @@ public class PreferenceController {
             return mpa.getJsonElementResponse();
         }
         response.status(HttpStatus.SC_OK);
+        //response.header setearle las cabeceras de JSON (ver en el repo)
 
         Map<String, Object> responseMap = new HashMap<>();
         responseMap.put("init_point", locPreference.getInitPoint());

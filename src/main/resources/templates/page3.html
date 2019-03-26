@@ -107,55 +107,52 @@
                 <h4><u>Flujo de Pago (v1)</u></h4>
             </div>
             <div align="left">
-                <form id="formProcessPayment" name="formProcessPayment" method="POST" action="/process-payment">
+                <form id="formProcessPayment" name="formProcessPayment" method="POST" action="/process-payment-v1">
                     <ul>
                         <li>
                             <label for="description">Description: </label>
-                            <input value="Algo muy codiciado 2" id="description" name="description" type="text" size="40"/>
+                            <input id="description" name="description" type="text" size="40"/>
                         </li>
                         <li>
                             <label htmlFor="amount">Monto: </label>
-                            <input value="500" id="amount" name="amount" placeholder="100" size="10"/>
+                            <input id="amount" name="amount" placeholder="1000" size="10" required />
                         </li>
                         <br />
                         <li>
                             <label for="cardNumber">Nº de Tarjeta: </label>
-                            <input size="20" type="text" value="4509953566233704" id="cardNumber" data-checkout="cardNumber" placeholder="4509 9535 6623 3704" onselectstart="return false" onpaste="return false" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete=off />
+                            <input size="20" type="text" id="cardNumber" data-checkout="cardNumber" placeholder="4509 9535 6623 3704" onselectstart="return false" onpaste="return false" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete=off required />
                             <img id="paymentMethodImg" style="vertical-align: middle" src="" />
+                            <img id="issuerImg" style="vertical-align: middle" src="" />
                             <input type="hidden" id="paymentMethodId" name="payment_method_id" />
+                            <input type="hidden" id="issuerId" name="issuer_id" />
                         </li>
                         <li>
                             <label for="cardExpirationMonth">Mes de expiración: </label>
-                            <input size="2" type="text" value="12" id="cardExpirationMonth" data-checkout="cardExpirationMonth" placeholder="12" onselectstart="return false" onpaste="return false" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete=off />
+                            <input size="2" type="text" id="cardExpirationMonth" data-checkout="cardExpirationMonth" placeholder="12" onselectstart="return false" onpaste="return false" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete=off required />
                             <label for="cardExpirationYear">Año de expiración: </label>
-                            <input size="4" type="text" value="2020" id="cardExpirationYear" data-checkout="cardExpirationYear" placeholder="2015" onselectstart="return false" onpaste="return false" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete=off />
+                            <input size="4" type="text" id="cardExpirationYear" data-checkout="cardExpirationYear" placeholder="2020" onselectstart="return false" onpaste="return false" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete=off required />
 
                             <label for="securityCode">Código de Seguridad: </label>
-                            <input size="4" type="text" value="143" id="securityCode" data-checkout="securityCode" placeholder="123" onselectstart="return false" onpaste="return false" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete=off />
-                        </li>
-                        <li>
-                            <label for="issuers">Banco: </label>
-                            <select id="issuers" name="issuer_id"></select>
-                            <img id="issuerImg" style="vertical-align: middle" src="" />
+                            <input size="4" type="text" id="securityCode" data-checkout="securityCode" placeholder="123" onselectstart="return false" onpaste="return false" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete=off required />
                         </li>
                         <li>
                             <label for="installments"> Cuotas: </label>
-                            <select id="installments" data-checkout="installments" name="installments"></select>
+                            <select id="installments" data-checkout="installments" name="installments" required></select>
                         </li>
                         <li>
                             <label for="cardholderName">Nombre en la tarjeta: </label>
-                            <input size="40" type="text" value="Nico Bertozzi" id="cardholderName" data-checkout="cardholderName" placeholder="APRO" />
+                            <input size="40" type="text" id="cardholderName" data-checkout="cardholderName" placeholder="APRO" required/>
                         </li>
                         <br />
                         <li>
                             <label for="docType">Tipo y Nº de documento: </label>
-                            <select id="docType" data-checkout="docType" />
+                            <select id="docType" data-checkout="docType" required/>
                             <label for="docNumber">Número: </label>
-                            <input size="10" type="text" value="32978330" id="docNumber" data-checkout="docNumber" placeholder="12345678" />
+                            <input size="10" type="text" id="docNumber" data-checkout="docNumber" placeholder="12345678" required />
                         </li>
                         <li>
                             <label for="email">Email: </label>
-                            <input value="test_user_19562067@testuser.com" id="email" name="email" type="email" placeholder="algo@otra-cosa.com" size="40"/>
+                            <input id="email" name="email" type="email" placeholder="algo@otra-cosa.com" required size="40"/>
                         </li>
                     </ul>
                     <br />
@@ -172,10 +169,10 @@
   var $cardNumber = document.querySelector('#cardNumber');
   var $amount = document.querySelector('#amount');
   var $installments = document.querySelector('#installments');
-  var $issuers = document.querySelector('#issuers');
 
   var $paymentMethodId = document.querySelector('#paymentMethodId');
   var $paymentMethodImg = document.querySelector('#paymentMethodImg');
+  var $issuerId = document.querySelector('#issuerId');
   var $issuerImg = document.querySelector('#issuerImg');
 
   // En la documentacion no asignaba en ningun lado el evento...
@@ -191,7 +188,7 @@
 
         // var bin = getBin();
         // ya que la linea de arriba no podia reconcoer el "getBin()"", se obtuvo a mano en la de abajo...
-        var bin = $cardNumber.value.substring(0, 7).replace(" ", "");
+        var bin = $cardNumber.value.substring(0, 6).replace(" ", "");
 
         Mercadopago.getPaymentMethod({
           "bin": bin
@@ -206,11 +203,7 @@
 
         $paymentMethodId.setAttribute('value', '');
         $paymentMethodImg.setAttribute('src', '');
-
-        while($issuers.firstChild) {
-          $issuers.removeChild($issuers.firstChild);
-        }
-
+        $issuerId.setAttribute('value', '');
         $issuerImg.setAttribute('src', '');
 
         while($installments.firstChild) {
@@ -234,35 +227,10 @@
       var paymentMethod = response[0];
       $paymentMethodId.setAttribute('value', paymentMethod.id);
       $paymentMethodImg.setAttribute('src', paymentMethod.secure_thumbnail);
-
-      Mercadopago.getIssuers(paymentMethod.id, issuerHandler);
     } else {
       document.querySelector("input[name=paymentMethodId]").value = (response[0] !== undefined ? response[0].id : "");
     }
   };
-
-  // Metodo para obtener los Issuer IDs (identificador del banco)
-  function issuerHandler(status, response) {
-    if(status == 200) {
-      // Removemos los hijos que tenga para que no se acumulen...
-      while ($issuers.firstChild) {
-        $issuers.removeChild($issuers.firstChild);
-      }
-      // Recorremos el array para armar los options del select de las cuotas...
-      for (i = 0; i < response.length; i++) {
-        var op = document.createElement('option');
-        op.text = response[i].name;
-        op.value = response[i].id;
-
-        $issuers.add(op, null);
-      }
-      //$issuers.value = '310';
-
-      //$issuerImg.setAttribute('src', response[0].secure_thumbnail);
-    } else {
-      //document.querySelector("input[name=issuerId]").value = (response[0] !== undefined ? response[0].id : "");
-    }
-  }
 
   function installmentsHandler(status, response) {
     if (status == 200) {
@@ -270,11 +238,16 @@
       while ($installments.firstChild) {
         $installments.removeChild($installments.firstChild);
       }
+
+      var installments = response[0];
+      $issuerId.setAttribute('value', installments.issuer.id);
+      $issuerImg.setAttribute('src', installments.issuer.secure_thumbnail);
+
       // Recorremos el array para armar los options del select de las cuotas...
-      for (i = 0; i < response[0].payer_costs.length; i++) {
+      for (i = 0; i < installments.payer_costs.length; i++) {
         var op = document.createElement('option');
-        op.text = response[0].payer_costs[i].recommended_message;
-        op.value = response[0].payer_costs[i].installments;
+        op.text = installments.payer_costs[i].recommended_message;
+        op.value = installments.payer_costs[i].installments;
 
         $installments.add(op, null);
       }
@@ -303,9 +276,9 @@
   };
 
   function sdkResponseHandler(status, response) {
-    if (status != 200 && status != 201) {
-      alert("Verify filled data");
-    } else {
+    //if (status != 200 && status != 201) {
+    //  alert("Verify filled data");
+    //} else {
       var form = document.querySelector('#formProcessPayment');
       var card = document.createElement('input');
 
@@ -318,7 +291,7 @@
       doSubmit = true;
 
       form.submit();
-    }
+    //}
   };
 </script>
 </html>

@@ -1,7 +1,7 @@
 package controllers;
 
 import com.mercadopago.resources.Payment;
-import controllers.handlers.ProcessPaymentRequestHandler;
+import controllers.handlers.ProcessPaymentV1RequestHandler;
 import controllers.handlers.RequestHandler;
 import controllers.handlers.RequestHandlerFactory;
 import errors.ErrorMessages;
@@ -30,8 +30,8 @@ public class PaymentControllerTest {
 
         RequestHandlerFactory requestHandlerFactory = Mockito.mock(RequestHandlerFactory.class);
 
-        requestHandler = Mockito.mock(ProcessPaymentRequestHandler.class);
-        Mockito.when(requestHandlerFactory.getProcessPaymentHandler(Mockito.any())).thenReturn((ProcessPaymentRequestHandler) requestHandler);
+        requestHandler = Mockito.mock(ProcessPaymentV1RequestHandler.class);
+        Mockito.when(requestHandlerFactory.getProcessPaymentHandler(Mockito.any())).thenReturn((ProcessPaymentV1RequestHandler) requestHandler);
 
         controller = new PaymentController(service, requestHandlerFactory);
     }

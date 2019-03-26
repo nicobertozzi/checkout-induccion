@@ -6,17 +6,15 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.validator.routines.EmailValidator;
 import spark.Request;
 import utils.RequestUtil;
-
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
-public class ProcessPaymentRequestHandler implements RequestHandler {
+public class ProcessPaymentV1RequestHandler implements RequestHandler {
 
     public PaymentDTO paymentDTO;
 
@@ -25,7 +23,6 @@ public class ProcessPaymentRequestHandler implements RequestHandler {
     }
 
     private List<ErrorCause> invalidCauses;
-    private HashMap<String, Object> validValues;
 
     private final String INVALID_PAYMENT_CODE = "200";
 
@@ -37,34 +34,19 @@ public class ProcessPaymentRequestHandler implements RequestHandler {
     private final String INVALID_PAYMENT_METHOD_ID_CODE = "206";
     private final String INVALID_TOKEN_CODE = "207";
 
-    public ProcessPaymentRequestHandler(Request request) throws IOException {
+    public ProcessPaymentV1RequestHandler(Request request) throws IOException {
         this.invalidCauses = new ArrayList<>();
 
         paymentDTO = RequestUtil.getBodyAsObject(request, PaymentDTO.class);
 
-        automaticValidation();
-        //manualValidation();
-    }
-
-    /**
-     * Automatic validations through annotations in the DTOs
-     */
-    private void automaticValidation() {
-        ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-        Validator validator = factory.getValidator();
-
-        for(ConstraintViolation violation : validator.validate(paymentDTO)) {
-            this.invalidCauses.add(new ErrorCause(INVALID_PAYMENT_CODE, "Invalid payment processing: " + violation.getPropertyPath() + " " + violation.getMessage()));
-        }
+        manualValidation();
+        //automaticValidation();
     }
 
     /**
      * Manual validations
      */
     private void manualValidation() {
-        if(StringUtils.isBlank(paymentDTO.getDescription())) {
-            this.invalidCauses.add(new ErrorCause(INVALID_DESCRIPTION_CODE, "Invalid payment processing. Description is null or empty"));
-        }
         if(StringUtils.isBlank(paymentDTO.getEmail())) {
             this.invalidCauses.add(new ErrorCause(INVALID_EMAIL_CODE, "Invalid payment processing. Payer's email is null or empty"));
         } else if(!EmailValidator.getInstance().isValid(paymentDTO.getEmail())) {
@@ -93,13 +75,21 @@ public class ProcessPaymentRequestHandler implements RequestHandler {
         }
     }
 
+    /**
+     * Automatic validations through annotations in the DTOs
+     */
+    private void automaticValidation() {
+        ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+        Validator validator = factory.getValidator();
+
+        for(ConstraintViolation violation : validator.validate(paymentDTO)) {
+            this.invalidCauses.add(new ErrorCause(INVALID_PAYMENT_CODE, "Invalid payment processing: " + violation.getPropertyPath() + " " + violation.getMessage()));
+        }
+    }
+
     @Override
     public boolean isValid() {
         return this.invalidCauses.isEmpty();
-    }
-
-    public <T> T getValidParam(String parameter) {
-        return (T) this.validValues.get(parameter);
     }
 
     @Override

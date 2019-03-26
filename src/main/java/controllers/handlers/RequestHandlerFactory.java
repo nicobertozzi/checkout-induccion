@@ -20,8 +20,18 @@ public class RequestHandlerFactory {
      * @param request current request.
      * @return the correct handler for this request.
      */
-    public ProcessPaymentRequestHandler getProcessPaymentHandler(Request request) throws Exception {
-        return new ProcessPaymentRequestHandler(request);
+    public ProcessPaymentV1RequestHandler getProcessPaymentV1Handler(Request request) throws Exception {
+        return new ProcessPaymentV1RequestHandler(request);
+    }
+
+    /**
+     * Handler for request solved by @see EndpointController
+     *
+     * @param request current request.
+     * @return the correct handler for this request.
+     */
+    public ProcessPaymentV2RequestHandler getProcessPaymentV2Handler(Request request) throws Exception {
+        return new ProcessPaymentV2RequestHandler(request);
     }
 
 }

@@ -15,14 +15,8 @@ public class RenderScreenController {
         HashMap<String, Object> mapa = new HashMap<>();
 
         if(PreferenceModel.preference.getId() != null) {
-            mapa.put("preferenceId", PreferenceModel.preference.getId());
             mapa.put("preferenceInitPoint", PreferenceModel.preference.getInitPoint());
 
-            if(PreferenceModel.preference.getPayer() != null) {
-                mapa.put("payerName", PreferenceModel.preference.getPayer().getName());
-                mapa.put("payerSurname", PreferenceModel.preference.getPayer().getSurname());
-                mapa.put("payerEmail", PreferenceModel.preference.getPayer().getEmail());
-            }
             if(!PreferenceModel.preference.getItems().isEmpty()) {
                 mapa.put("items", PreferenceModel.preference.getItems());
             }

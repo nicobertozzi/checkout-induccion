@@ -12,7 +12,7 @@
         $(document).ready(function(){
             $(".add-row").click(function() {
                 var prefix = "items[" + $("table tbody").children().size() + "]";
-                var row = "<tr><td><input type='checkbox' name='record'></td><td><input name='" + prefix + ".title'/></td><td><input name='" + prefix + ".unit_price' /></td><td><input name='" + prefix + ".quantity' /></td></tr>";
+                var row = "<tr><td><input type='checkbox' name='record'></td><td><input name='" + prefix + ".title' required /></td><td><input name='" + prefix + ".unit_price' required /></td><td><input name='" + prefix + ".quantity' required /></td></tr>";
 
                 $("table tbody").append(row);
             });
@@ -163,22 +163,22 @@
             <div align="left">
                 <form id="formCreatePreference" method="POST" action="/create-preference">
                     <label for="payerName"><b>Nombre: </b></label>
-                    <input value="Nico" id="payerName" type="text" placeholder="Nombre del comprador" name="payer.name" required size="20">
+                    <input id="payerName" type="text" placeholder="Nombre del comprador" name="payer.name" size="20">
                     <br />
                     <label for="payerSurname"><b>Apellido: </b></label>
-                    <input value="Bertozzi" id="payerSurname" type="text" placeholder="Apellido del comprador" name="payer.surname" required size="20">
+                    <input id="payerSurname" type="text" placeholder="Apellido del comprador" name="payer.surname" size="20">
                     <br />
                     <label for="payerEmail"><b>E-mail: </b></label>
-                    <input value="test_user_19562067@testuser.com" id="payerEmail" type="email" placeholder="algo@otra-cosa.com" name="payer.email" required size="40">
+                    <input id="payerEmail" type="email" placeholder="algo@otra-cosa.com" name="payer.email" size="40">
                     <br />
                     <label for="payerDocumentType"><b>Tipo de DNI: </b></label>
-                    <select id="payerDocumentType" name="payer.document_type" required>
-                        <option value=""></option>
+                    <select id="payerDocumentType" name="payer.document_type">
                         <option selected value="DNI">DNI</option>
+                        <option value="Otro">Otro</option>
                     </select>
                     <label for="payerDocumentNumber"><b>Número: </b></label>
-                    <input value="32978330" id="payerDocumentNumber" type="text" placeholder="Número" name="payer.document_number" required size="10">
-                    <br />
+                    <input id="payerDocumentNumber" type="text" placeholder="Número" name="payer.document_number" size="10">
+                    <br /><br />
                     <label><b>Items: </b></label>
                     <div align="center">
                         <div>
@@ -201,13 +201,13 @@
                                             <input type='checkbox' name='record'>
                                         </td>
                                         <td>
-                                            <input name="items[0].title" value="Algo codiciado" />
+                                            <input name="items[0].title" required />
                                         </td>
                                         <td>
-                                            <input name="items[0].unit_price" value="2000" />
+                                            <input name="items[0].unit_price" required />
                                         </td>
                                         <td>
-                                            <input name="items[0].quantity" value="8" />
+                                            <input name="items[0].quantity" required />
                                         </td>
                                     </tr>
                                 </tbody>
