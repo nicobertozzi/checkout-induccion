@@ -4,23 +4,8 @@
     <list default="true" id="6b7ab209-a0f7-43ba-9c97-fd3f5615bb3b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/PaymentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/PaymentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/PreferenceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/PreferenceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/RenderScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/RenderScreenController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/handlers/CreatePreferenceRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/handlers/CreatePreferenceRequestHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/handlers/ProcessPaymentRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/handlers/ProcessPaymentV1RequestHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/handlers/RequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/handlers/RequestHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/handlers/RequestHandlerFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/handlers/RequestHandlerFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/dto/PayerDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/dto/PayerDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/dto/PaymentDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/dto/PaymentDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/dto/PreferenceDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/dto/PreferenceDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/router/RouteGroupImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/router/RouteGroupImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/services/PaymentsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/PaymentsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/Json.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/Json.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/page1.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/page1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/page3.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/page3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/page4.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/page4.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/controllers/PaymentControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/controllers/PaymentControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/handlers/ProcessPaymentV1RequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/handlers/ProcessPaymentV1RequestHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/handlers/ProcessPaymentV2RequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/handlers/ProcessPaymentV2RequestHandler.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -91,21 +76,7 @@
     <favorites_list name="checkout.induccion" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/page3.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="125" column="47" selection-start-line="125" selection-start-column="41" selection-end-line="125" selection-end-column="47" />
-              <folding>
-                <element signature="n#style#0;n#img#0;n#li#2;n#ul#0;n#form#0;n#div#1;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#img#1;n#li#2;n#ul#0;n#form#0;n#div#1;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -176,30 +147,32 @@
         <option value="$PROJECT_DIR$/src/main/java/Main.java" />
         <option value="$PROJECT_DIR$/src/test/java/Utils/JsonTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/utils/Json.java" />
-        <option value="$PROJECT_DIR$/src/main/java/model/dto/PreferenceDTO.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/dto/PayerDTO.java" />
         <option value="$PROJECT_DIR$/src/main/java/controllers/RenderScreenController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/index.html" />
         <option value="$PROJECT_DIR$/src/main/java/model/dto/PaymentDTO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controllers/handlers/ProcessPaymentRequestHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/controllers/PreferenceController.java" />
         <option value="$PROJECT_DIR$/src/main/java/controllers/handlers/RequestHandlerFactory.java" />
         <option value="$PROJECT_DIR$/src/main/java/router/RouteGroupImpl.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/page4.html" />
         <option value="$PROJECT_DIR$/src/main/java/controllers/handlers/RequestHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controllers/handlers/ProcessPaymentV1RequestHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/controllers/handlers/CreatePreferenceRequestHandler.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/page1.html" />
-        <option value="$PROJECT_DIR$/src/main/java/controllers/PaymentController.java" />
         <option value="$PROJECT_DIR$/src/main/java/services/PaymentsService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controllers/handlers/ProcessPaymentV2RequestHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/model/dto/PreferenceDTO.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/page3.html" />
+        <option value="$PROJECT_DIR$/src/main/java/controllers/handlers/ProcessPaymentRequestHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controllers/handlers/ProcessPaymentV1RequestHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controllers/handlers/ProcessPaymentV2RequestHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controllers/PaymentController.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="width" value="1920" />
-    <option name="height" value="1080" />
+  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
+    <option name="x" value="74" />
+    <option name="y" value="79" />
+    <option name="width" value="1440" />
+    <option name="height" value="821" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -207,187 +180,32 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="checkout.induccion" type="b2602c69:ProjectViewProjectNode" />
-              <item name="checkout.induccion" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="checkout.induccion" type="b2602c69:ProjectViewProjectNode" />
-              <item name="checkout.induccion" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="checkout.induccion" type="b2602c69:ProjectViewProjectNode" />
-              <item name="checkout.induccion" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="checkout.induccion" type="b2602c69:ProjectViewProjectNode" />
-              <item name="checkout.induccion" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="checkout.induccion" type="b2602c69:ProjectViewProjectNode" />
-              <item name="checkout.induccion" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="constants" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="checkout.induccion" type="b2602c69:ProjectViewProjectNode" />
-              <item name="checkout.induccion" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="checkout.induccion" type="b2602c69:ProjectViewProjectNode" />
-              <item name="checkout.induccion" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="controllers" type="462c0819:PsiDirectoryNode" />
-              <item name="handlers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="checkout.induccion" type="b2602c69:ProjectViewProjectNode" />
-              <item name="checkout.induccion" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="errors" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="checkout.induccion" type="b2602c69:ProjectViewProjectNode" />
-              <item name="checkout.induccion" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="checkout.induccion" type="b2602c69:ProjectViewProjectNode" />
-              <item name="checkout.induccion" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-              <item name="dto" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="checkout.induccion" type="b2602c69:ProjectViewProjectNode" />
-              <item name="checkout.induccion" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="router" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="checkout.induccion" type="b2602c69:ProjectViewProjectNode" />
-              <item name="checkout.induccion" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="services" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="checkout.induccion" type="b2602c69:ProjectViewProjectNode" />
-              <item name="checkout.induccion" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="services" type="462c0819:PsiDirectoryNode" />
-              <item name="providers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="checkout.induccion" type="b2602c69:ProjectViewProjectNode" />
-              <item name="checkout.induccion" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="utils" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="checkout.induccion" type="b2602c69:ProjectViewProjectNode" />
-              <item name="checkout.induccion" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="checkout.induccion" type="b2602c69:ProjectViewProjectNode" />
-              <item name="checkout.induccion" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="checkout.induccion" type="b2602c69:ProjectViewProjectNode" />
-              <item name="checkout.induccion" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="checkout.induccion" type="b2602c69:ProjectViewProjectNode" />
-              <item name="checkout.induccion" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="checkout.induccion" type="b2602c69:ProjectViewProjectNode" />
-              <item name="checkout.induccion" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="checkout.induccion" type="b2602c69:ProjectViewProjectNode" />
-              <item name="checkout.induccion" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="Utils" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553614207614" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553713122523" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/resources" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="controllers.handlers" />
-      <recent name="controllers" />
-      <recent name="services" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources/templates" />
       <recent name="$PROJECT_DIR$/css" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/main/java" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="controllers.handlers" />
+      <recent name="controllers" />
+      <recent name="services" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -475,10 +293,10 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.Main" />
       <item itemvalue="JUnit.PreferenceControllerTest.whenInvalidCreatePreferenceThenRespondBadRequest" />
       <item itemvalue="JUnit.PaymentControllerTest.whenProcessPaymentThenUseService" />
       <item itemvalue="JUnit.PaymentControllerTest.whenInvalidProcessPaymentThenRespondBadRequest" />
-      <item itemvalue="Application.Main" />
       <item itemvalue="JUnit.JsonTest.convertToJSON" />
     </list>
     <recent_temporary>
@@ -553,9 +371,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49931034" visible="true" weight="0.21745351" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49931034" visible="true" weight="0.29899856" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -565,8 +382,8 @@
       <window_info anchor="bottom" id="Messages" order="0" weight="0.32673267" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.32871288" />
-      <window_info anchor="bottom" id="Run" order="3" weight="0.23465346" />
-      <window_info active="true" anchor="bottom" id="Debug" order="4" sideWeight="0.49946752" visible="true" weight="0.3433735" />
+      <window_info anchor="bottom" id="Run" order="3" weight="0.23373494" />
+      <window_info anchor="bottom" id="Debug" order="4" sideWeight="0.49946752" weight="0.3433735" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="7" />
@@ -641,17 +458,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/messages/MessageResponse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="31" lean-forward="true" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
-          <folding>
-            <element signature="e#251#252#0" expanded="true" />
-            <element signature="e#289#290#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/utils/JsonTransformer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -714,19 +520,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utils/APIHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="50" lean-forward="true" selection-start-line="17" selection-start-column="50" selection-end-line="17" selection-end-column="50" />
-          <folding>
-            <element signature="e#334#335#0" expanded="true" />
-            <element signature="e#381#382#0" expanded="true" />
-            <element signature="e#634#635#0" expanded="true" />
-            <element signature="e#681#682#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utils/APIHelper.java" />
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -939,16 +733,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/dto/PreferenceDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/model/dto/PayerDTO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -993,16 +777,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/handlers/RequestHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="33" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/controllers/handlers/CreatePreferenceRequestHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -1020,35 +794,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
           <caret line="171" column="108" selection-start-line="171" selection-start-column="108" selection-end-line="171" selection-end-column="108" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/PaymentController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="793">
-          <caret line="79" selection-start-line="79" selection-end-line="79" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/handlers/ProcessPaymentV1RequestHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="67" column="8" selection-start-line="67" selection-start-column="8" selection-end-line="71" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/handlers/ProcessPaymentV2RequestHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="43" column="37" lean-forward="true" selection-start-line="43" selection-start-column="37" selection-end-line="43" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2959#2960#0" expanded="true" />
-            <element signature="e#3058#3059#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1092,6 +837,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/dto/PreferenceDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="21" column="37" lean-forward="true" selection-start-line="21" selection-start-column="37" selection-end-line="21" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#478#479#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/page3.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
@@ -1100,6 +856,59 @@
             <element signature="n#style#0;n#img#0;n#li#2;n#ul#0;n#form#0;n#div#1;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#1;n#li#2;n#ul#0;n#form#0;n#div#1;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/handlers/RequestHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/handlers/ProcessPaymentRequestHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="19" column="60" lean-forward="true" selection-start-line="19" selection-start-column="60" selection-end-line="19" selection-end-column="60" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#215#216#0" expanded="true" />
+            <element signature="e#248#249#0" expanded="true" />
+            <element signature="e#397#398#0" expanded="true" />
+            <element signature="e#448#449#0" expanded="true" />
+            <element signature="e#511#512#0" expanded="true" />
+            <element signature="e#547#548#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/handlers/ProcessPaymentV2RequestHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/handlers/ProcessPaymentV1RequestHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/PaymentController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="48" lean-forward="true" selection-start-line="48" selection-end-line="48" />
         </state>
       </provider>
     </entry>

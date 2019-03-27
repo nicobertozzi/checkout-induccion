@@ -2,9 +2,7 @@ package controllers;
 
 import com.mercadopago.core.MPApiResponse;
 import com.mercadopago.resources.Payment;
-import controllers.handlers.ProcessPaymentV1RequestHandler;
-import controllers.handlers.ProcessPaymentV2RequestHandler;
-import controllers.handlers.RequestHandlerFactory;
+import controllers.handlers.*;
 import errors.ErrorMessages;
 import errors.ErrorResponse;
 import org.apache.http.HttpStatus;
@@ -34,28 +32,7 @@ public class PaymentController {
      * @throws Exception
      */
     public Object processPaymentV1(Request request, Response response) throws Exception {
-        response.header("Content-Type", "application/json");
-
-        ProcessPaymentV1RequestHandler requestHandler = requestHandlerFactory.getProcessPaymentV1Handler(request);
-
-        if(!requestHandler.isValid()) {
-            response.status(HttpStatus.SC_BAD_REQUEST);
-            return new ErrorResponse(HttpStatus.SC_BAD_REQUEST, ErrorMessages.BAD_REQUEST, ErrorMessages.INVALID_PAYMENT_PROCESSING, requestHandler.getInvalidCause());
-        }
-
-        Payment locPayment = paymentsService.save(requestHandler.getPaymentDTO());
-        if(locPayment.getId() == null) {
-            MPApiResponse mpa = locPayment.getLastApiResponse();
-            response.status(mpa.getStatusCode());
-
-            return mpa.getJsonElementResponse();
-        }
-        response.status(HttpStatus.SC_OK);
-
-        Map<String, Object> responseMap = new HashMap<>();
-        responseMap.put("payment_status", locPayment.getStatus());
-
-        return responseMap;
+        return processPayment(requestHandlerFactory.getProcessPaymentV1Handler(request), response);
     }
 
     /**
@@ -67,9 +44,11 @@ public class PaymentController {
      * @throws Exception
      */
     public Object processPaymentV2(Request request, Response response) throws Exception {
-        response.header("Content-Type", "application/json");
+        return processPayment(requestHandlerFactory.getProcessPaymentV2Handler(request), response);
+    }
 
-        ProcessPaymentV2RequestHandler requestHandler = requestHandlerFactory.getProcessPaymentV2Handler(request);
+    private Object processPayment(ProcessPaymentRequestHandler requestHandler, Response response) throws Exception {
+        response.header("Content-Type", "application/json");
 
         if(!requestHandler.isValid()) {
             response.status(HttpStatus.SC_BAD_REQUEST);
